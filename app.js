@@ -8,7 +8,7 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     fs = require('fs');
-
+	
 var app = express();
 
 var db;
@@ -26,6 +26,7 @@ var methodOverride = require('method-override');
 var logger = require('morgan');
 var errorHandler = require('errorhandler');
 var multipart = require('connect-multiparty')
+var angularTagCloud = require('angular-tag-cloud');
 var multipartMiddleware = multipart();
 var userController = require('./controllers/userController');
 

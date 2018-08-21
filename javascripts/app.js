@@ -1,5 +1,5 @@
 
-var myAppModule = angular.module('myApp', ['ngRoute']);
+var myAppModule = angular.module('myApp', ['ngRoute','ngTagCloud']);
 
 myAppModule.config(function($routeProvider,$locationProvider) {  
     $routeProvider
@@ -10,6 +10,9 @@ myAppModule.config(function($routeProvider,$locationProvider) {
         }).when('/login', {
             templateUrl: 'views/login/signin.html',
             controller: 'userController'
+        }).when('/outbreak', {
+            templateUrl: 'views/diseases/outbreak.html',
+            controller: 'diseasesController'
         }).when('/', {                                        
             templateUrl: 'views/dashboard/dashboard.html',
             controller: 'dashboardController'

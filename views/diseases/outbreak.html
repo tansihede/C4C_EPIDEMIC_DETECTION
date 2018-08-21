@@ -1,0 +1,286 @@
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Data Tables</title>
+    <style>
+        #loader {
+            transition: all .3s ease-in-out;
+            opacity: 1;
+            visibility: visible;
+            position: fixed;
+            height: 100vh;
+            width: 100%;
+            background: #fff;
+            z-index: 90000
+        }
+        
+        #loader.fadeOut {
+            opacity: 0;
+            visibility: hidden
+        }
+        .chatComp{
+			height:30%;
+		}
+        .spinner {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: calc(50% - 20px);
+            left: calc(50% - 20px);
+            background-color: #333;
+            border-radius: 100%;
+            -webkit-animation: sk-scaleout 1s infinite ease-in-out;
+            animation: sk-scaleout 1s infinite ease-in-out
+        }
+        
+        @-webkit-keyframes sk-scaleout {
+            0% {
+                -webkit-transform: scale(0)
+            }
+            100% {
+                -webkit-transform: scale(1);
+                opacity: 0
+            }
+        }
+        
+        @keyframes sk-scaleout {
+            0% {
+                -webkit-transform: scale(0);
+                transform: scale(0)
+            }
+            100% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                opacity: 0
+            }
+        }
+		/*word cloud*/
+		.bucket1 {
+		  color: red;
+		}
+		 
+		.bucket2 {
+		  color: blue;
+		}
+		 
+		.bucket3 {
+		  color: yellow;
+		}
+    </style>
+	<script>
+		var ctx = document.getElementById("myChart").getContext('2d');
+		data = {
+			 datasets: [{
+				data: [45, 25, 20, 10],
+				backgroundColor: [
+					'#ff6384',
+					'#36a2eb',
+					'#cc65fe',
+					'#ffce56',
+				]
+			}],
+			labels: ['Red', 'Blue', 'Purple', 'Yellow']
+		};
+		var myDoughnutChart = new Chart(ctx, {
+			type: 'doughnut',
+			data: data,
+			
+		});
+		
+		
+		
+</script>
+    <link href="style/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="../node_modules/angular-tag-cloud/src/css/ng-tag-cloud.css">
+</head>
+
+
+<body class="app">
+  <!--  <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.classList.add('fadeOut');
+            }, 300);
+        });
+
+    </script>-->
+    <div>
+        
+           
+            <main class="main-content bgc-grey-100">
+                <div id="mainContent">
+                    <div class="container-fluid">
+                        <h4 class="c-grey-900 mT-10 mB-30">Data Tables</h4>
+                        <div class="row">
+							<div class="masonry-item col-md-6">
+								<div class="bd bgc-white">
+									<div class="layers">
+										<div class="layer w-100 p-20">
+											<h6 class="lh-1">Sales Report</h6></div>
+										<div class="layer w-100">
+											<div class="bgc-light-blue-500 c-white p-20">
+												<div class="peers ai-c jc-sb gap-40">
+													<div class="peer peer-greed">
+														<h5>November 2017</h5>
+														<p class="mB-0">Sales Report</p>
+													</div>
+													<div class="peer">
+														<h3 class="text-right">$6,000</h3></div>
+												</div>
+											</div>
+											<div class="table-responsive p-20">
+												<table class="table">
+													<thead>
+														<tr>
+															<th class="bdwT-0">Name</th>
+															<th class="bdwT-0">Status</th>
+															<th class="bdwT-0">Date</th>
+															<th class="bdwT-0">Price</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td class="fw-600">Item #1 Name</td>
+															<td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">Unavailable</span></td>
+															<td>Nov 18</td>
+															<td><span class="text-success">$12</span></td>
+														</tr>
+														<tr>
+															<td class="fw-600">Item #2 Name</td>
+															<td><span class="badge bgc-deep-purple-50 c-deep-purple-700 p-10 lh-0 tt-c badge-pill">New</span></td>
+															<td>Nov 19</td>
+															<td><span class="text-info">$34</span></td>
+														</tr>
+														<tr>
+															<td class="fw-600">Item #3 Name</td>
+															<td><span class="badge bgc-pink-50 c-pink-700 p-10 lh-0 tt-c badge-pill">New</span></td>
+															<td>Nov 20</td>
+															<td><span class="text-danger">-$45</span></td>
+														</tr>
+														<tr>
+															<td class="fw-600">Item #4 Name</td>
+															<td><span class="badge bgc-green-50 c-green-700 p-10 lh-0 tt-c badge-pill">Unavailable</span></td>
+															<td>Nov 21</td>
+															<td><span class="text-success">$65</span></td>
+														</tr>
+														<tr>
+															<td class="fw-600">Item #5 Name</td>
+															<td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">Used</span></td>
+															<td>Nov 22</td>
+															<td><span class="text-success">$78</span></td>
+														</tr>
+														<tr>
+															<td class="fw-600">Item #6 Name</td>
+															<td><span class="badge bgc-orange-50 c-orange-700 p-10 lh-0 tt-c badge-pill">Used</span></td>
+															<td>Nov 23</td>
+															<td><span class="text-danger">-$88</span></td>
+														</tr>
+														<tr>
+															<td class="fw-600">Item #7 Name</td>
+															<td><span class="badge bgc-yellow-50 c-yellow-700 p-10 lh-0 tt-c badge-pill">Old</span></td>
+															<td>Nov 22</td>
+															<td><span class="text-success">$56</span></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+									<div class="ta-c bdT w-100 p-20"><a href="#">Check all the sales</a></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row chatComp" >
+									<div class="col-md-6">
+										<div  id="chat-sidebar">
+											   <div class="layers h-50">
+												  <div class="bdB layer w-100"><input type="text" placeholder="Search contacts..." name="chatSearch" class="form-constrol p-15 bdrs-0 w-100 bdw-0"></div>
+												  <div class="layer w-100 fxg-1 scrollable pos-r">
+													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
+														<div class="peer"><img src="https://randomuser.me/api/portraits/men/1.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
+														<div class="peer peer-greed pL-20">
+														   <h6 class="mB-0 lh-1 fw-400">John Doe</h6>
+														   <small class="lh-1 c-green-500">Online</small>
+														</div>
+													 </div>
+													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
+														<div class="peer"><img src="https://randomuser.me/api/portraits/men/2.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
+														<div class="peer peer-greed pL-20">
+														   <h6 class="mB-0 lh-1 fw-400">Moo Doe</h6>
+														   <small class="lh-1 c-amber-500">Away</small>
+														</div>
+													 </div>
+													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
+														<div class="peer"><img src="https://randomuser.me/api/portraits/men/3.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
+														<div class="peer peer-greed pL-20">
+														   <h6 class="mB-0 lh-1 fw-400">Adam Jones</h6>
+														   <small class="lh-1 c-grey-500">Offline</small>
+														</div>
+													 </div>
+													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
+														<div class="peer"><img src="https://randomuser.me/api/portraits/men/4.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
+														<div class="peer peer-greed pL-20">
+														   <h6 class="mB-0 lh-1 fw-400">Mizo Doe</h6>
+														   <small class="lh-1 c-red-500">Busy</small>
+														</div>
+													 </div>
+													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
+														<div class="peer"><img src="https://randomuser.me/api/portraits/men/1.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
+														<div class="peer peer-greed pL-20">
+														   <h6 class="mB-0 lh-1 fw-400">John Doe</h6>
+														   <small class="lh-1 c-green-500">Online</small>
+														</div>
+													 </div>
+													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
+														<div class="peer"><img src="https://randomuser.me/api/portraits/men/2.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
+														<div class="peer peer-greed pL-20">
+														   <h6 class="mB-0 lh-1 fw-400">Moo Doe</h6>
+														   <small class="lh-1 c-amber-500">Away</small>
+														</div>
+													 </div>
+													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
+														<div class="peer"><img src="https://randomuser.me/api/portraits/men/3.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
+														<div class="peer peer-greed pL-20">
+														   <h6 class="mB-0 lh-1 fw-400">Adam Jones</h6>
+														   <small class="lh-1 c-grey-500">Offline</small>
+														</div>
+													 </div>
+													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
+														<div class="peer"><img src="https://randomuser.me/api/portraits/men/4.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
+														<div class="peer peer-greed pL-20">
+														   <h6 class="mB-0 lh-1 fw-400">Mizo Doe</h6>
+														   <small class="lh-1 c-red-500">Busy</small>
+														</div>
+													 </div>
+												  </div>
+											   </div>
+											</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<canvas id="myChart" width="400" height="400"></canvas>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<ng-tag-cloud cloud-width="250" cloud-height="250" cloud-data="tagData"></ng-tag-cloud>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+     <script type="text/javascript" src="vendor.js"></script>
+    <script type="text/javascript" src="bundle.js"></script>
+</body>
+
+
