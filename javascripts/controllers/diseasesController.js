@@ -4,12 +4,14 @@ angular.module('myApp').controller('diseasesController', ['$scope',function($sco
 	
     
     $scope.tagData = [
-          {text: "Lorem", weight: 15, link: "https://google.com"}, //if your tag has a link.
-          {text: "Ipsum", weight: 9},
-          {text: "Dolor", weight: 6},
-          {text: "Sit", weight: 7},
-          {text: "Amet", weight: 5}
-          // ...as many words as you want
+          {text: "weakness", weight: 15, link: "https://google.com"}, //if your tag has a link.
+          {text: "abdominal pain", weight: 9},
+          {text: "Dozy", weight: 6},
+          {text: "constipation", weight: 7},
+          {text: "headaches", weight: 5},
+		  {text: "fever", weight: 5},
+          {text: "muscle pain", weight: 2},
+		  // ...as many words as you want
       ];
    
 }]);
