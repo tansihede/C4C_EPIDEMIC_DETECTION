@@ -1,17 +1,15 @@
-<head>
-
-    <style>
-        .users-list>li img {
-            border-radius: 50%;
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
-</head>
-
-<body>
-    <div>
+<div>
+<div ng-include="'../sidebar/sidebar.html'"></div>
+<div class="page-container">  
+<div ng-include="'../header/header.html'"></div>
         <main class="main-content bgc-grey-100">
+			<style>
+				.users-list>li img {
+					border-radius: 50%;
+					max-width: 100%;
+					height: auto;
+				}
+			</style>
             <div id="mainContent">
                 <div class="row gap-20">
                     <div class="col-md-3">
@@ -217,8 +215,7 @@
                 </div>
             </div>
         </main>
-    <script type="text/javascript" src="vendor.js"></script>
-    <script type="text/javascript" src="bundle.js"></script>
-    </div>
-
-</body>
+			
+			<div ng-include="'../footer/footer.html'"></div>
+		</div>
+	</div>
