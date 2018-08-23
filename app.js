@@ -173,9 +173,11 @@ app.get('/api/getSymptoms', function(request, response) {
 
         var data=[{
             'diseaseName': 'Cholera',
+            'symptoms':['Diarrhea','Nausea','Vomiting','Mild to Severe Dehydration'],
             'ageRange': "30-40"
         },{
             'diseaseName': 'Influenza',
+            'symptoms':['High Fever','Running Nose','Sore Throat','Muscle pain','headache','Coughing','Feeling Tired'],
             'ageRange': "40-50"
         }];
     
