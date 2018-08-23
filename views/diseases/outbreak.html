@@ -20,9 +20,12 @@
             opacity: 0;
             visibility: hidden
         }
+		.chartLabel{
+			 text-align: center;
+		}
 		.chartStyle{
 		    padding-top: 2%;
-			padding-left: 19%;
+			padding-left: 30%;
 		}
 		.piChartStyle{
 			display: block;
@@ -30,7 +33,7 @@
 			height: 150px !important;
 		}
         .chatComp{
-			height:30%;
+			height:46%;
 		}
         .spinner {
             width: 40px;
@@ -132,6 +135,10 @@
             <main class="main-content bgc-grey-100">
                 <div id="mainContent">
                     <div class="container-fluid">
+						<!--<div class="mT-30">
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#emailModal">Launch demo modal</button>
+                              
+                         </div> -->
                          <div class="row">
 							<div class="peer peer-greed w-70p@lg+ w-100@lg- p-20">
 								<div class="bd bgc-white">
@@ -140,8 +147,8 @@
 											<div class="bgc-light-blue-500 c-white p-20">
 												<div class="peers ai-c jc-sb gap-40">
 													<div class="peer peer-greed">
-														<h5>November 2017</h5>
-														<p class="mB-0">Typhoid Outbreaks</p>
+														<h5>Typhoid Outbreaks</h5>
+														
 													</div>
 													<div class="peer">
 														<h3 class="text-right">320 Cases</h3></div>
@@ -151,60 +158,78 @@
 												<table class="table">
 													<thead>
 														<tr>
-															<th class="bdwT-0">Regions</th>
-															<th class="bdwT-0">Intensity</th>
-															<th class="bdwT-0">Date</th>
-															<th class="bdwT-0">Casualties</th>
+															<th class="bdwT-0">Name</th>
+															<th class="bdwT-0">Occupation</th>
+															<th class="bdwT-0">Village/Town</th>
+															<th class="bdwT-0">Age</th>
+															<th class="bdwT-0">Date Reported</th>
+															<th class="bdwT-0">Key Symptoms</th>
 														</tr>
 													</thead>
 													<tbody>
 														<tr>
-															<td class="fw-600">India</td>
-															<td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">high</span></td>
+															<td class="fw-600">Ram</td>
+															<td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">Labour</span></td>
+															<td>Chambal</td>
+															<td>38</td>
 															<td>Nov 18</td>
-															<td><span class="text-success">20</span></td>
+															<td><span class="text-success">weakness, pain</span></td>
 														</tr>
 														<tr>
-															<td class="fw-600">Brazil</td>
-															<td><span class="badge bgc-deep-purple-50 c-deep-purple-700 p-10 lh-0 tt-c badge-pill">Moderate</span></td>
+															<td class="fw-600">Sham</td>
+															<td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">Software Engineer</span></td>
+															<td>Panjim</td>
+															<td>38</td>
 															<td>Nov 19</td>
-															<td><span class="text-info">14</span></td>
+															<td><span class="text-success">Dozy, pain</span></td>
 														</tr>
 														<tr>
-															<td class="fw-600">India</td>
-															<td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">high</span></td>
+															<td class="fw-600">Ram</td>
+															<td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">Labour</span></td>
+															<td>Chambal</td>
+															<td>38</td>
 															<td>Nov 18</td>
-															<td><span class="text-success">20</span></td>
+															<td><span class="text-success">weakness, pain</span></td>
 														</tr>
 														<tr>
-															<td class="fw-600">Brazil</td>
-															<td><span class="badge bgc-deep-purple-50 c-deep-purple-700 p-10 lh-0 tt-c badge-pill">Moderate</span></td>
+															<td class="fw-600">Sham</td>
+															<td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">Software Engineer</span></td>
+															<td>Panjim</td>
+															<td>38</td>
 															<td>Nov 19</td>
-															<td><span class="text-info">14</span></td>
+															<td><span class="text-success">Dozy, pain</span></td>
 														</tr>
 														<tr>
-															<td class="fw-600">India</td>
-															<td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">high</span></td>
+															<td class="fw-600">Ram</td>
+															<td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">Labour</span></td>
+															<td>Chambal</td>
+															<td>38</td>
 															<td>Nov 18</td>
-															<td><span class="text-success">20</span></td>
+															<td><span class="text-success">weakness, pain</span></td>
 														</tr>
 														<tr>
-															<td class="fw-600">Brazil</td>
-															<td><span class="badge bgc-deep-purple-50 c-deep-purple-700 p-10 lh-0 tt-c badge-pill">Moderate</span></td>
+															<td class="fw-600">Sham</td>
+															<td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">Software Engineer</span></td>
+															<td>Panjim</td>
+															<td>38</td>
 															<td>Nov 19</td>
-															<td><span class="text-info">14</span></td>
+															<td><span class="text-success">Dozy, pain</span></td>
 														</tr>
 														<tr>
-															<td class="fw-600">India</td>
-															<td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">high</span></td>
+															<td class="fw-600">Ram</td>
+															<td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">Labour</span></td>
+															<td>Chambal</td>
+															<td>38</td>
 															<td>Nov 18</td>
-															<td><span class="text-success">20</span></td>
+															<td><span class="text-success">weakness, pain</span></td>
 														</tr>
 														<tr>
-															<td class="fw-600">Brazil</td>
-															<td><span class="badge bgc-deep-purple-50 c-deep-purple-700 p-10 lh-0 tt-c badge-pill">Moderate</span></td>
+															<td class="fw-600">Sham</td>
+															<td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">Software Engineer</span></td>
+															<td>Panjim</td>
+															<td>38</td>
 															<td>Nov 19</td>
-															<td><span class="text-info">14</span></td>
+															<td><span class="text-success">Dozy, pain</span></td>
 														</tr>
 													</tbody>
 												</table>
@@ -216,88 +241,114 @@
 							</div>
 							<div class="peer bdL p-20 w-30p@lg+ w-100p@lg-">
 								<div class="row chatComp" >
-									<div class="col-md-6">
-										<div  id="chat-sidebar">
-											   <div class="layers h-50">
-												  <div class="bdB layer w-100"><input type="text" placeholder="Search contacts..." name="chatSearch" class="form-constrol p-15 bdrs-0 w-100 bdw-0"></div>
-												  <div class="layer w-100 fxg-1 scrollable pos-r">
-													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
-														<div class="peer"><img src="https://randomuser.me/api/portraits/men/1.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
-														<div class="peer peer-greed pL-20">
-														   <h6 class="mB-0 lh-1 fw-400">John Doe</h6>
-														   <small class="lh-1 c-green-500">Online</small>
+										<div >
+											    <div class="box box-danger">
+													<div class="box-header with-border">
+														<h3 class="box-title">Talk to early Responders</h3>
+
+														<div class="box-tools pull-right">
+															<!-- <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+											</button>
+											<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+											</button>-->
 														</div>
-													 </div>
-													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
-														<div class="peer"><img src="https://randomuser.me/api/portraits/men/2.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
-														<div class="peer peer-greed pL-20">
-														   <h6 class="mB-0 lh-1 fw-400">Moo Doe</h6>
-														   <small class="lh-1 c-amber-500">Away</small>
-														</div>
-													 </div>
-													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
-														<div class="peer"><img src="https://randomuser.me/api/portraits/men/3.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
-														<div class="peer peer-greed pL-20">
-														   <h6 class="mB-0 lh-1 fw-400">Adam Jones</h6>
-														   <small class="lh-1 c-grey-500">Offline</small>
-														</div>
-													 </div>
-													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
-														<div class="peer"><img src="https://randomuser.me/api/portraits/men/4.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
-														<div class="peer peer-greed pL-20">
-														   <h6 class="mB-0 lh-1 fw-400">Mizo Doe</h6>
-														   <small class="lh-1 c-red-500">Busy</small>
-														</div>
-													 </div>
-													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
-														<div class="peer"><img src="https://randomuser.me/api/portraits/men/1.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
-														<div class="peer peer-greed pL-20">
-														   <h6 class="mB-0 lh-1 fw-400">John Doe</h6>
-														   <small class="lh-1 c-green-500">Online</small>
-														</div>
-													 </div>
-													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
-														<div class="peer"><img src="https://randomuser.me/api/portraits/men/2.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
-														<div class="peer peer-greed pL-20">
-														   <h6 class="mB-0 lh-1 fw-400">Moo Doe</h6>
-														   <small class="lh-1 c-amber-500">Away</small>
-														</div>
-													 </div>
-													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
-														<div class="peer"><img src="https://randomuser.me/api/portraits/men/3.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
-														<div class="peer peer-greed pL-20">
-														   <h6 class="mB-0 lh-1 fw-400">Adam Jones</h6>
-														   <small class="lh-1 c-grey-500">Offline</small>
-														</div>
-													 </div>
-													 <div class="peers fxw-nw ai-c p-20 bdB bgc-white bgcH-grey-50 cur-p">
-														<div class="peer"><img src="https://randomuser.me/api/portraits/men/4.jpg" alt="" class="w-3r h-3r bdrs-50p"></div>
-														<div class="peer peer-greed pL-20">
-														   <h6 class="mB-0 lh-1 fw-400">Mizo Doe</h6>
-														   <small class="lh-1 c-red-500">Busy</small>
-														</div>
-													 </div>
-												  </div>
-											   </div>
+													</div>
+													<!-- /.box-header -->
+													<div class="box-body no-padding">
+														<ul class="users-list clearfix">
+															<li>
+																<img src="/public/images/user1-128x128.jpg" alt="User Image">
+																<a class="users-list-name" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Alexander Pierce</a>
+																<span class="users-list-date">Today</span>
+															</li>
+															<li>
+																<img src="/public/images/user8-128x128.jpg" alt="User Image">
+																<a class="users-list-name" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Norman</a>
+																<span class="users-list-date">Yesterday</span>
+															</li>
+															<li>
+																<img src="/public/images/user7-128x128.jpg" alt="User Image">
+																<a class="users-list-name" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Jane</a>
+																<span class="users-list-date">12 Jan</span>
+															</li>
+															<li>
+																<img src="/public/images/user6-128x128.jpg" alt="User Image">
+																<a class="users-list-name"  class="btn btn-primary" data-toggle="modal" data-target="#emailModal"href="#">John</a>
+																<span class="users-list-date">12 Jan</span>
+															</li>
+															<li>
+																<img src="/public/images/user2-160x160.jpg" alt="User Image">
+																<a class="users-list-name" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Alexander</a>
+																<span class="users-list-date">13 Jan</span>
+															</li>
+															<li>
+																<img src="/public/images/user5-128x128.jpg" alt="User Image">
+																<a class="users-list-name" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Sarah</a>
+																<span class="users-list-date">14 Jan</span>
+															</li>
+															<li>
+																<img src="/public/images/user4-128x128.jpg" alt="User Image">
+																<a class="users-list-name" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Nora</a>
+																<span class="users-list-date">15 Jan</span>
+															</li>
+															<li>
+																<img src="/public/images/user3-128x128.jpg" alt="User Image">
+																<a class="users-list-name" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Nadia</a>
+																<span class="users-list-date">15 Jan</span>
+															</li>
+														</ul>
+														<!-- /.users-list -->
+													</div>
+													<!-- /.box-body -->
+													<div class="box-footer text-center">
+														<a href="javascript:void(0)" class="uppercase">View All Users</a>
+													</div>
+													<!-- /.box-footer -->
+												</div>
 											</div>
 									</div>
-								</div>
 								<div class="row">
-									<div class="col-md-6 chartStyle">
-										<h5>Age Breakup</h5>
-										
+									<div class="chartStyle">
+										<div class="chartLabel">
+											<h5>Age Breakup</h5>
+										</div>
 										<canvas id="myChart" width="400" height="400" class = "piChartStyle"></canvas>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-6">
-										<ng-tag-cloud cloud-width="250" cloud-height="250" cloud-data="tagData"></ng-tag-cloud>
+									<div class="">
+										<ng-tag-cloud cloud-width="400" cloud-height="250" cloud-data="tagData"></ng-tag-cloud>
 									</div>
 								</div>
 							</div>
                         </div>
                     </div>
                 </div>
+				<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				 <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					   <div class="modal-header">
+						  <h4 class="c-grey-900 mB-20">Send Message</h4>
+						  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					   </div>
+					   <div class="modal-body">
+							<div class="email-compose">
+							 <div class="d-n@md+ p-20"><a class="email-side-toggle c-grey-900 cH-blue-500 td-n" href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+							 <form class="email-compose-body">
+								<div class="send-header">
+								   <div class="form-group"><input type="text" class="form-control" placeholder="To"></div>
+								   <div class="form-group"><input type="text" class="form-control" placeholder="CC"></div>
+								   <div class="form-group"><input class="form-control" placeholder="Email Subject"></div>
+								   <div class="form-group"><textarea name="compose" class="form-control" placeholder="Say Hi..." rows="10"></textarea></div>
+								</div>
+								<div id="compose-area"></div>
+								<div class="text-right mrg-top-30"><button class="btn btn-danger" data-dismiss="modal">Send</button></div>
+							 </form>
+						  </div>
+					   </div>
+					</div>
+				 </div>
+			  </div>
             </main>
         </div>
      <script type="text/javascript" src="vendor.js"></script>
