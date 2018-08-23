@@ -37,10 +37,7 @@ $locationProvider.html5Mode({
   requireBase: false
 }); 
   
-
 });
-
-
 
 
 myAppModule.run(function($rootScope, $location){
