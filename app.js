@@ -141,7 +141,47 @@ app.get('/api/getPatients', function(request, response) {
       });
 });
 
+app.get('/api/getSymptoms', function(request, response) {
 
+    // var parientName = req.param('id');
+    // var patientAge = req.param('token');
+    // var patientOccupation = req.param('geo');
+    // var patientSymptoms = req.param('geo');
+    // var country = req.param('geo');
+    // var city = req.param('geo');
+    // var state = req.param('geo');
+
+    //   db = cloudant.use(dbCredentials.dbName);
+    //   db.insert(ddoc, function (er, result) {
+    //     if (er) {
+    //         throw er;
+    //     }
+
+    //     console.log('Created design document with books index');
+    // });
+
+    // var request = require('request');
+    // request.post({
+    //     headers: {'content-type' : 'application/x-www-form-urlencoded'},
+    //     url:     'http://localhost/test2.php',
+    //     body:    "mes=heydude"
+    // }, function(error, response, body){
+    //     console.log(body);
+    // });
+
+    var data=[{
+        'diseaseName': 'Cholera',
+        'ageRange': "30-40"
+    },{
+        'diseaseName': 'Influenza',
+        'ageRange': "40-50"
+    }];
+
+    return response.json({ result : data});
+    console.log('ending response...');
+    response.end();
+
+});
 
 app.use(express.static(__dirname));
 exports = module.exports = app;

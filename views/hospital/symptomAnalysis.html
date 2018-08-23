@@ -24,17 +24,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">Cholera</th>
-                                                <td>Sudden onset of diarrhea nausea vomiting mild to severe dehydration</td>
-                                                <td>nausea dehydration</td>
-                                                <td>30-40</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Influenza</th>
-                                                <td>High fever, running nose, sore throat muscle pains, Headache Coughing, feeling tired</td>
-                                                <td>High fever running nose sore throa</td>
-                                                <td>40-50</td>
+                                            <tr ng-repeat="item in result">
+                                                <th scope="row">{{item.diseaseName}}</th>
+                                                <td>
+                                                    <span ng-repeat="sym in item.symptoms">
+                                                        {{sym}}<br />
+                                                    </span>
+                                                </td>
+                                                <td>================</td>
+                                                <td>{{item.ageRange}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
