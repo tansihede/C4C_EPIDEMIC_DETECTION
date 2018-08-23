@@ -143,14 +143,15 @@ app.get('/api/getPatients', function(request, response) {
 
 app.get('/api/getSymptoms', function(request, response) {
 
-    // var parientName = req.param('id');
-    // var patientAge = req.param('token');
-    // var patientOccupation = req.param('geo');
-    // var patientSymptoms = req.param('geo');
-    // var country = req.param('geo');
-    // var city = req.param('geo');
-    // var state = req.param('geo');
+    var patientName = request.param('patientName');
+    var patientAge = request.param('patientAge');
+    var patientOccupation = request.param('patientOccupation');
+    var patientSymptoms = request.param('patientSymptoms');
+    var patientCountry = request.param('patientCountry');
+    var patientState = request.param('patientState');
+    var patientZip = request.param('patientZip');
 
+    
     //   db = cloudant.use(dbCredentials.dbName);
     //   db.insert(ddoc, function (er, result) {
     //     if (er) {

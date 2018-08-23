@@ -1,9 +1,13 @@
-angular.module('myApp').controller('symptomController', ['$scope', '$http', function ($scope, $http) {
+angular.module('myApp').controller('symptomController', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
 
 	 
     $scope.getSymptoms = function () {
 
-        $http.get('/api/getSymptoms').success(function (data) {
+        console.log($routeParams)
+
+        var redirectUrl = 'patientName=' + $routeParams.patientName + '&patientAge=' + $routeParams.patientAge + '&patientOccupation=' + $routeParams.patientOccupation + '&patientSymptoms=' + $routeParams.patientSymptoms + '&patientCountry=' + $routeParams.patientCountry + '&patientState=' + $routeParams.patientState + '&patientZip=' + $routeParams.patientZip
+
+        $http.get('/api/getSymptoms?' + redirectUrl).success(function (data) {
             $scope.result = data.result;
             console.log(JSON.stringify(data));
 
