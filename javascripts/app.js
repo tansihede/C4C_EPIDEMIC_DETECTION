@@ -19,6 +19,12 @@ myAppModule.config(function($routeProvider,$locationProvider) {
         }).when('/dashboard', {
             templateUrl: 'views/dashboard/dashboard.html',
             controller: 'dashboardController'
+        }).when('/patientDetails', {
+            templateUrl: 'views/hospital/patientDetails.html',
+            controller: 'userController'                    // correct controller to be changed
+        }).when('/symptomAnalysis', {
+            templateUrl: 'views/hospital/symptomAnalysis.html',
+            controller: 'userController'                    // correct controller to be changed
         }).
     otherwise({redirectTo:'/'})
 
