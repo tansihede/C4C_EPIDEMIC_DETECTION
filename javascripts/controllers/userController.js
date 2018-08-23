@@ -2,13 +2,13 @@
 angular.module('myApp').controller('userController', ['$scope','$http','$window','$rootScope','$location',function($scope,$http,$window,$rootScope,$location) {
 	//require('angular-tag-cloud')
   $scope.login = function(){
- // let key = "isLoggedinHospital";
+
       
   var params = {
   'username':$scope.username,
   'password':$scope.password
 };
-
+ 
 $http.post('/login',params).success(function(data) {
 $rootScope.isLoggedinHospital = true;
   $window.localStorage.setItem("isLoggedinHospital", false);  
