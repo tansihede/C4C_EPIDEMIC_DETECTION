@@ -18,7 +18,7 @@ var cloudant;
 var fileToUpload;
 
 var dbCredentials = {
-    dbName: 'my_sample_db'
+    dbName: 'rapidcare'
 };
 
 var bodyParser = require('body-parser');
@@ -97,6 +97,49 @@ function initDBConnection() {
 initDBConnection();
 
 app.get('/', routes.index);
+
+app.post('/login',userController.login);
+
+/*Added method to get Patient Details */
+
+app.get('/api/getPatients', function(request, response) {
+    console.log("Get method invoked.. ")
+
+      db = cloudant.use(dbCredentials.dbName);
+
+      db.list(function(err, body) {
+          if (!err) {
+              var len = body.rows.length;
+              console.log('total # of docs -> ' + len);
+              if (len == 0) {
+                 
+              } else {
+               var query = {
+                        "selector": {
+                          "document_type" : "symptoms" 
+                        }
+                      };
+       
+           db.find(query, function(err, doc) {
+               if (!err) {
+                   console.log(doc.docs);
+                  return response.json({ result : doc.docs});  
+               //   response.write(JSON.stringify(doc.docs));
+                   console.log('ending response...');
+                   response.end();
+                   }
+                else {
+                   console.log(err);
+               }
+           });
+              }
+
+          } else {
+              console.log(err);
+          }
+      });
+});
+
 
 
 app.use(express.static(__dirname));

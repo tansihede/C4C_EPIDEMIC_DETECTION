@@ -14,11 +14,14 @@ myAppModule.config(function($routeProvider,$locationProvider) {
             templateUrl: 'views/diseases/outbreak.html',
             controller: 'diseasesController'
         }).when('/', {                                        
-            templateUrl: 'views/dashboard/dashboard.html',
-            controller: 'dashboardController'
+            templateUrl: 'views/login/signin.html',
+            controller: 'userController'
         }).when('/dashboard', {
             templateUrl: 'views/dashboard/dashboard.html',
             controller: 'dashboardController'
+        }).when('/hospital', {
+            templateUrl: 'views/hospital/hospitalDashboard.html',
+            controller: 'hospitalDashboardController'
         }).
     otherwise({redirectTo:'/'})
 
@@ -28,4 +31,15 @@ $locationProvider.html5Mode({
 }); 
   
 
+});
+
+
+
+
+myAppModule.run(function($rootScope, $location){
+  $rootScope.$on('routeChangeSuccess', function(event, next, current){
+    if ($location.path() == '/login') {
+      $rootscope.isLoggedinHospital =  false;
+    };
+  });
 });
