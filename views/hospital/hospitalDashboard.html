@@ -1,0 +1,223 @@
+<head>
+
+    <style>
+        .users-list>li img {
+            border-radius: 50%;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <main class="main-content bgc-grey-100">
+            <div id="mainContent">
+                <div class="row gap-20">
+                    <div class="col-md-3">
+                        <div class="layers bd bgc-white p-20">
+                            <div class="layer w-100 mB-10">
+                                <h6 class="lh-1">Total Visits</h6></div>
+                            <div class="layer w-100">
+                                <div class="peers ai-sb fxw-nw">
+                                    <div class="peer peer-greed"><span id="sparklinedash"><canvas width="45" height="20" style="display: inline-block; width: 45px; height: 20px; vertical-align: top;"></canvas></span></div>
+                                    <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">+10%</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="layers bd bgc-white p-20">
+                            <div class="layer w-100 mB-10">
+                                <h6 class="lh-1">Total Page Views</h6></div>
+                            <div class="layer w-100">
+                                <div class="peers ai-sb fxw-nw">
+                                    <div class="peer peer-greed"><span id="sparklinedash2"><canvas width="45" height="20" style="display: inline-block; width: 45px; height: 20px; vertical-align: top;"></canvas></span></div>
+                                    <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">-7%</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="layers bd bgc-white p-20">
+                            <div class="layer w-100 mB-10">
+                                <h6 class="lh-1">Unique Visitor</h6></div>
+                            <div class="layer w-100">
+                                <div class="peers ai-sb fxw-nw">
+                                    <div class="peer peer-greed"><span id="sparklinedash3"><canvas width="45" height="20" style="display: inline-block; width: 45px; height: 20px; vertical-align: top;"></canvas></span></div>
+                                    <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500">~12%</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="layers bd bgc-white p-20">
+                            <div class="layer w-100 mB-10">
+                                <h6 class="lh-1">Bounce Rate</h6></div>
+                            <div class="layer w-100">
+                                <div class="peers ai-sb fxw-nw">
+                                    <div class="peer peer-greed"><span id="sparklinedash4"><canvas width="45" height="20" style="display: inline-block; width: 45px; height: 20px; vertical-align: top;"></canvas></span></div>
+                                    <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">33%</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gap-20">
+                    <div class="col-md-8">
+                        <!--table starts -->
+                        <div class="bgc-white bd bdrs-3 p-20 mB-20">
+                            <h4 class="c-grey-900 mB-20">Bootstrap Data Table</h4>
+                            <div id="dataTable_wrapper" class="dataTables_wrapper">
+                                <div class="dataTables_length" id="dataTable_length">
+                                 <!--   <label>Show
+                                        <select name="dataTable_length" aria-controls="dataTable" class="">
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select> entries</label>-->
+                                </div>
+                              <!--  <div id="dataTable_filter" class="dataTables_filter">
+                                    <label>Search:
+                                        <input type="search" class="" placeholder="" aria-controls="dataTable">
+                                    </label>
+                                </div>-->
+                                <table id="dataTable" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 212px;">Name</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 312px;">Occupation</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 159px;">Village/Town</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 60px;">Age</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 138px;">Date Reported</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 131px;">Key Symptoms</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        <tr  ng-repeat="item in result">
+                                            <td class="sorting_1">{{item.hospital_name}}</td>
+                                            <td>{{item.patient_occ}}</td>
+                                            <td>{{item.City}}</td>
+                                            <td>{{item.patient_age}}</td>
+                                            <td>2008/11/28</td>
+                                            <td>{{item.Symptoms_reported}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                               <!-- <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>-->
+                              <!--  <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><a class="paginate_button previous disabled" aria-controls="dataTable" data-dt-idx="0" tabindex="0" id="dataTable_previous">Previous</a><span><a class="paginate_button current" aria-controls="dataTable" data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="dataTable" data-dt-idx="2" tabindex="0">2</a><a class="paginate_button " aria-controls="dataTable" data-dt-idx="3" tabindex="0">3</a><a class="paginate_button " aria-controls="dataTable" data-dt-idx="4" tabindex="0">4</a><a class="paginate_button " aria-controls="dataTable" data-dt-idx="5" tabindex="0">5</a><a class="paginate_button " aria-controls="dataTable" data-dt-idx="6" tabindex="0">6</a></span><a class="paginate_button next" aria-controls="dataTable" data-dt-idx="7" tabindex="0" id="dataTable_next">Next</a></div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div></div>
+                        <!-- weather widget starts -->
+                        <div class="bd bgc-white p-20" style="margin-top:100px;">
+                            <div class="layers">
+                                <div class="layer w-100">
+                                    <div class="peers peers-greed ai-fs ta-c">
+                                        <div class="peer">
+                                            <h6 class="mB-10">MON</h6>
+                                            <canvas class="sleet" width="30" height="30"></canvas><span class="d-b fw-600">32<sup>°F</sup></span></div>
+                                        <div class="peer">
+                                            <h6 class="mB-10">TUE</h6>
+                                            <canvas class="clear-day" width="30" height="30"></canvas><span class="d-b fw-600">30<sup>°F</sup></span></div>
+                                        <div class="peer">
+                                            <h6 class="mB-10">WED</h6>
+                                            <canvas class="partly-cloudy-day" width="30" height="30"></canvas><span class="d-b fw-600">28<sup>°F</sup></span></div>
+                                        <div class="peer">
+                                            <h6 class="mB-10">THR</h6>
+                                            <canvas class="cloudy" width="30" height="30"></canvas><span class="d-b fw-600">32<sup>°F</sup></span></div>
+                                        <div class="peer">
+                                            <h6 class="mB-10">FRI</h6>
+                                            <canvas class="snow" width="30" height="30"></canvas><span class="d-b fw-600">24<sup>°F</sup></span></div>
+                                        <div class="peer">
+                                            <h6 class="mB-10">SAT</h6>
+                                            <canvas class="wind" width="30" height="30"></canvas><span class="d-b fw-600">28<sup>°F</sup></span></div>
+                                        <div class="peer">
+                                            <h6 class="mB-10">SUN</h6>
+                                            <canvas class="sleet" width="30" height="30"></canvas><span class="d-b fw-600">32<sup>°F</sup></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- weather widget end -->
+                        <!-- USERS LIST -->
+                        <div class="box box-danger" style="margin-top:30px;">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Talk to early Responders</h3>
+
+                                <div class="box-tools pull-right">
+                                    <span class="label label-danger">8 New Members</span>
+                                    <!-- <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>-->
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body no-padding">
+                                <ul class="users-list clearfix">
+                                    <li>
+                                        <img src="/public/images/user1-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Alexander Pierce</a>
+                                        <span class="users-list-date">Today</span>
+                                    </li>
+                                    <li>
+                                        <img src="/public/images/user8-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Norman</a>
+                                        <span class="users-list-date">Yesterday</span>
+                                    </li>
+                                    <li>
+                                        <img src="/public/images/user7-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Jane</a>
+                                        <span class="users-list-date">12 Jan</span>
+                                    </li>
+                                    <li>
+                                        <img src="/public/images/user6-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">John</a>
+                                        <span class="users-list-date">12 Jan</span>
+                                    </li>
+                                    <li>
+                                        <img src="/public/images/user2-160x160.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Alexander</a>
+                                        <span class="users-list-date">13 Jan</span>
+                                    </li>
+                                    <li>
+                                        <img src="/public/images/user5-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Sarah</a>
+                                        <span class="users-list-date">14 Jan</span>
+                                    </li>
+                                    <li>
+                                        <img src="/public/images/user4-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Nora</a>
+                                        <span class="users-list-date">15 Jan</span>
+                                    </li>
+                                    <li>
+                                        <img src="/public/images/user3-128x128.jpg" alt="User Image">
+                                        <a class="users-list-name" href="#">Nadia</a>
+                                        <span class="users-list-date">15 Jan</span>
+                                    </li>
+                                </ul>
+                                <!-- /.users-list -->
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer text-center">
+                                <a href="javascript:void(0)" class="uppercase">View All Users</a>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                        <!--/.box -->
+                        <!--chat widget end -->
+
+                    </div>
+                    <!--div end -->
+                </div>
+            </div>
+        </main>
+    <script type="text/javascript" src="vendor.js"></script>
+    <script type="text/javascript" src="bundle.js"></script>
+    </div>
+
+</body>
