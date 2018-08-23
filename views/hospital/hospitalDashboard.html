@@ -17,7 +17,7 @@
                     <div class="col-md-3">
                         <div class="layers bd bgc-white p-20">
                             <div class="layer w-100 mB-10">
-                                <h6 class="lh-1">Total Visits</h6></div>
+                                <h6 class="lh-1">Total Symptoms</h6></div>
                             <div class="layer w-100">
                                 <div class="peers ai-sb fxw-nw">
                                     <div class="peer peer-greed"><span id="sparklinedash"><canvas width="45" height="20" style="display: inline-block; width: 45px; height: 20px; vertical-align: top;"></canvas></span></div>
@@ -83,6 +83,7 @@
                                         <input type="search" class="" placeholder="" aria-controls="dataTable">
                                     </label>
                                 </div>-->
+                                
                                 <table id="dataTable" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                     <thead>
                                         <tr role="row">
@@ -96,11 +97,11 @@
                                     </thead>
                                     <tbody >
                                         <tr  ng-repeat="item in result">
-                                            <td class="sorting_1">{{item.hospital_name}}</td>
+                                            <td class="sorting_1">{{item.patient_name}}</td>
                                             <td>{{item.patient_occ}}</td>
                                             <td>{{item.City}}</td>
                                             <td>{{item.patient_age}}</td>
-                                            <td>2008/11/28</td>
+                                            <td>{{item.date_updated}}</td>
                                             <td>{{item.Symptoms_reported}}</td>
                                         </tr>
                                     </tbody>
