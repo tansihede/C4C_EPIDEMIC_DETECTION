@@ -27,7 +27,7 @@ myAppModule.config(function($routeProvider,$locationProvider) {
             controller: 'userController'                    // correct controller to be changed
         }).when('/symptomAnalysis', {
             templateUrl: 'views/hospital/symptomAnalysis.html',
-            controller: 'userController'                    // correct controller to be changed
+            controller: 'symptomController'                    // correct controller to be changed
         }).
     otherwise({redirectTo:'/'})
 

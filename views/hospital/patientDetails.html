@@ -2,6 +2,24 @@
 <html>
  <head>
     <meta charset="utf-8">
+    
+    <script type="text/javascript">
+        document.getElementById("submitButton").onclick = function () {
+            patientName = document.getElementById("inputName").value
+            patientAge = document.getElementById("inputAge").value
+            patientOccupation = document.getElementById("inputOccupation").value
+            patientSymptoms = document.getElementById("inputSymptoms").value
+            patientCountry = document.getElementById("inputCountry").value
+            patientState = document.getElementById("inputState").value
+            patientZip = document.getElementById("inputZip").value
+
+            redirectUrl = 'patientName=' + patientName + '&patientAge=' + patientAge + '&patientOccupation=' + patientOccupation + '&patientSymptoms=' + patientSymptoms + '&patientCountry=' + patientCountry + '&patientState=' + patientState + '&patientZip=' + patientZip
+
+            document.getElementById("goToLink").setAttribute("href", "/symptomAnalysis?" + redirectUrl);
+            document.getElementById("goToLink").click();
+        };
+    </script>
+
 </head>
  <body class="app">
     <div class="page-container">
@@ -15,20 +33,20 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-9">
                                         <label for="inputEmail4">Patient Name</label>
-                                        <input type="email" class="form-control" id="inputEmail4" placeholder="patient Name">
+                                        <input type="email" class="form-control" id="inputName" placeholder="patient Name">
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="inputPassword4">Age</label>
-                                        <input type="number" class="form-control" id="inputPassword4" placeholder="Age">
+                                        <input type="number" class="form-control" id="inputAge" placeholder="Age">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAddress">Occupation</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="Factory Worker, Farmer, etc.">
+                                    <input type="text" class="form-control" id="inputOccupation" placeholder="Factory Worker, Farmer, etc.">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAddress2">Symptoms</label>
-                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Headache, Back pain, etc.">
+                                    <input type="text" class="form-control" id="inputSymptoms" placeholder="Headache, Back pain, etc.">
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -44,11 +62,13 @@
                                         <input type="text" class="form-control" id="inputZip">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit Case</button>
+                                <button type="button" id="submitButton" class="btn btn-primary">Submit Case</button>
+                                <a id='goToLink'></a>
                             </form>
                         </div>
                     </div>
-                </div>
+                </div>             
+               <div style="padding-left:60%"> <a href = "/hospital"><< Back to dashboard</a></div>
             </div>
         </main>
     </div>

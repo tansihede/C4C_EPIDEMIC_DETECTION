@@ -141,6 +141,51 @@ app.get('/api/getPatients', function(request, response) {
       });
 });
 
+app.get('/api/getSymptoms', function(request, response) {
+
+    var patientName = request.param('patientName');
+    var patientAge = request.param('patientAge');
+    var patientOccupation = request.param('patientOccupation');
+    var patientSymptoms = request.param('patientSymptoms');
+    var patientCountry = request.param('patientCountry');
+    var patientState = request.param('patientState');
+    var patientZip = request.param('patientZip');
+
+    // var request = require('request');
+    // request.post({
+    //     headers: {'content-type' : 'application/x-www-form-urlencoded'},
+    //     url:     'http://localhost/test2.php',
+    //     body:    "mes=heydude"
+    // }, function(error, response, body){
+    //     console.log(body);
+    // });
+
+
+    // NEED TO MAKE NLU CALL BEFORE THIS
+    dbInsertQuery = {"document_type":"symptoms","hospital_name":"All India Institute of Medical Sciences","location":patientCountry,"patient_name":patientName,"patient_age":patientAge,"patient_occ":patientOccupation,"City":patientState,"Symptoms_reported":patientSymptoms,"disease":"cholera","prediction":{"cholera":55,"malaria":25},"date_updated":"23-08-2018"}
+    console.log(dbInsertQuery)
+
+    db = cloudant.use(dbCredentials.dbName);
+    db.insert(dbInsertQuery, function (er, result) {
+        if (er) {
+            throw er;
+        }
+
+        var data=[{
+            'diseaseName': 'Cholera',
+            'symptoms':['Diarrhea','Nausea','Vomiting','Mild to Severe Dehydration'],
+            'ageRange': "30-40"
+        },{
+            'diseaseName': 'Influenza',
+            'symptoms':['High Fever','Running Nose','Sore Throat','Muscle pain','headache','Coughing','Feeling Tired'],
+            'ageRange': "40-50"
+        }];
+    
+        return response.json({ result : data});
+        console.log('ending response...');
+        response.end();
+    });
+});
 
 
 app.use(express.static(__dirname));
