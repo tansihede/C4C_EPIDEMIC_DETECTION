@@ -29,7 +29,7 @@ var errorHandler = require('errorhandler');
 var multipart = require('connect-multiparty')
 var multipartMiddleware = multipart();
 var userController = require('./controllers/userController');
-var userController = require('./controllers/diseasesController');
+
 
 
 // all environments
