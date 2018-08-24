@@ -11,7 +11,10 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
             console.log('Error: ' + data);
         });
     }; 
+	$scope.sendMessage = function(number){
+		document.getElementById("ph-Number").value = number;
 
+	}
     $scope.getpatientDetails();
 
 }]);
