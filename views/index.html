@@ -75,7 +75,9 @@
 			                <div class="carousel-caption">
 		               			<h1>providing</h1>
 		               			<p>Insightful Disease forecast</p>
-		               			<button>learn more</button>
+								<a href="index_old.html">
+									<button>learn more</button>
+								</a>
 			                </div>
 			            </div>
 			            <div class="item">
@@ -310,30 +312,68 @@
 		<div class="container">
 			<div class="row">
 				<div class="contact-caption clearfix">
-					<div class="contact-heading text-center">
-						<h2>contact us</h2>
-					</div>
-					<div class="col-md-5 contact-info text-left">
-						<h3>contact information</h3>
-						<div class="info-detail">
-							<ul><li><i class="fa fa-calendar"></i><span>Monday - Friday:</span> 9:30 AM to 6:30 PM</li></ul>
-							<ul><li><i class="fa fa-map-marker"></i><span>Address:</span> 123 Some Street , London, UK, CP 123</li></ul>
-							<ul><li><i class="fa fa-phone"></i><span>Phone:</span> (032) 987-1235</li></ul>
-							<ul><li><i class="fa fa-fax"></i><span>Fax:</span> (123) 984-1234</li></ul>
-							<ul><li><i class="fa fa-envelope"></i><span>Email:</span> info@doctor.com</li></ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-md-offset-1 contact-form">
-						<h3>leave us a message</h3>
-
-						<form class="form">
-							<input class="name" type="text" placeholder="Name">
-							<input class="email" type="email" placeholder="Email">
-							<input class="phone" type="text" placeholder="Phone No:">
-							<textarea class="message" name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-							<input class="submit-btn" type="submit" value="SUBMIT">
-						</form>
-					</div>
+					<div class="bgc-white p-20 bd col-md-9">
+                        <h2 class="c-grey-900">Register As Volunteer</h2>
+                        <div class="mT-30">
+                            <form id="form">
+                                <div class="form-row">
+                                    <div class="form-group col-md-9">
+                                        <label for="inputEmail4">Name</label>
+                                        <input type="email" class="form-control" id="inputName" placeholder="Volunteer Name">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputPassword4">Age</label>
+                                        <input type="number" class="form-control" id="inputAge" placeholder="Age">
+                                    </div>
+                                </div>
+                                <div class="form-row col-md-12">
+									<div class="form-group ">
+										<label for="inputAddress">Contact Number</label>
+										<input type="text" class="form-control" id="inputOccupation" pattern="/(7|8|9)\d{9}/">
+									</div>
+									
+									
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="inputAddress2">Specialization</label>
+                                    <input type="text" class="form-control" id="inputSymptoms" placeholder="Doctor, Nurse, etc.">
+                                </div>
+								<div class="form-group col-md-12 ">
+                                       <label for="inputState">Associated with</label> 
+                                       <select id="inputState" class="form-control">
+										  <option selected="selected">None</option>
+                                          <option >Red Cross</option>
+										  <option >Doctors Without Borders</option>
+										  <option >Mennonite Central Committee</option>
+										  <option >Direct Relief</option>
+										  <option >AMURT</option>
+										  <option >International Medical Corps</option>
+										  
+										  
+                                          <option></option>
+                                       </select>
+                                    </div>
+                                <div class="form-row ">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputCity">Country</label>
+                                        <input type="text" class="form-control" id="inputCountry">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputState">State</label>
+                                        <input type="text" class="form-control" id="inputState">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="inputZip">Zip</label>
+                                        <input type="text" class="form-control" id="inputZip">
+                                    </div>
+                                </div>
+								 <div class="form-row" style="    padding-bottom: 50px;text-align: center;padding-top: 56px;">
+									<button type="button" id="submitButton" class="btn btn-primary form-group">Add Volunteer</button>
+                                </div>
+								<a id='goToLink'></a>
+                            </form>
+                        </div>
+                    </div>  
 				</div>
 			</div>
 		</div>
