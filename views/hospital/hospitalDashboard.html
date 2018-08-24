@@ -10,6 +10,7 @@
 </head>
 
 <body>
+	<div ng-include="'../header/header.html'"></div>
     <div>
         <main class="main-content bgc-grey-100">
             <div id="mainContent">
@@ -67,7 +68,7 @@
                     <div class="col-md-8">
                         <!--table starts -->
                         <div class="bgc-white bd bdrs-3 p-20 mB-20">
-                            <h4 class="c-grey-900 mB-20">Patient Details</h4>
+                            <h4 class="c-grey-900 mB-20">Patient Details <a href="/patientDetails" style="margin-left:65%;"><button type="submit" class="btn btn-primary">Add a New Case</button></a></h4>
                             <div id="dataTable_wrapper" class="dataTables_wrapper">
                                 <div class="dataTables_length" id="dataTable_length">
                                  <!--   <label>Show
@@ -110,17 +111,23 @@
                               <!--  <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><a class="paginate_button previous disabled" aria-controls="dataTable" data-dt-idx="0" tabindex="0" id="dataTable_previous">Previous</a><span><a class="paginate_button current" aria-controls="dataTable" data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="dataTable" data-dt-idx="2" tabindex="0">2</a><a class="paginate_button " aria-controls="dataTable" data-dt-idx="3" tabindex="0">3</a><a class="paginate_button " aria-controls="dataTable" data-dt-idx="4" tabindex="0">4</a><a class="paginate_button " aria-controls="dataTable" data-dt-idx="5" tabindex="0">5</a><a class="paginate_button " aria-controls="dataTable" data-dt-idx="6" tabindex="0">6</a></span><a class="paginate_button next" aria-controls="dataTable" data-dt-idx="7" tabindex="0" id="dataTable_next">Next</a></div>-->
                             </div>
                         </div>
-                        <div>
-                           <a href="/patientDetails"><button type="submit" class="btn btn-primary" >Add new Profile</button></a>
-                            </div>
                     </div>
-                    <div class="col-md-4">
-                        <div></div>
+                    <div class="col-md-4">                     
                         <!-- weather widget starts -->
-                        <div class="bd bgc-white p-20" style="margin-top:100px;">
+                           <div class="bd bgc-white p-20">
+                <!--         <div class="bd bgc-white p-20" style="margin-top:100px;"> -->
                             <div class="layers">
                                 <div class="layer w-100">
-                                    <div class="peers peers-greed ai-fs ta-c">
+                                    <div class="peers peers-greed ai-fs ta-c">                                        
+                                        <div class="peer">
+                                            <h6 class="mB-10">FRI</h6>
+                                            <canvas class="snow" width="30" height="30"></canvas><span class="d-b fw-600">24<sup>°F</sup></span></div>
+                                        <div class="peer">
+                                            <h6 class="mB-10">SAT</h6>
+                                            <canvas class="wind" width="30" height="30"></canvas><span class="d-b fw-600">28<sup>°F</sup></span></div>
+                                        <div class="peer">
+                                            <h6 class="mB-10">SUN</h6>
+                                            <canvas class="sleet" width="30" height="30"></canvas><span class="d-b fw-600">32<sup>°F</sup></span></div>
                                         <div class="peer">
                                             <h6 class="mB-10">MON</h6>
                                             <canvas class="sleet" width="30" height="30"></canvas><span class="d-b fw-600">32<sup>°F</sup></span></div>
@@ -133,15 +140,6 @@
                                         <div class="peer">
                                             <h6 class="mB-10">THR</h6>
                                             <canvas class="cloudy" width="30" height="30"></canvas><span class="d-b fw-600">32<sup>°F</sup></span></div>
-                                        <div class="peer">
-                                            <h6 class="mB-10">FRI</h6>
-                                            <canvas class="snow" width="30" height="30"></canvas><span class="d-b fw-600">24<sup>°F</sup></span></div>
-                                        <div class="peer">
-                                            <h6 class="mB-10">SAT</h6>
-                                            <canvas class="wind" width="30" height="30"></canvas><span class="d-b fw-600">28<sup>°F</sup></span></div>
-                                        <div class="peer">
-                                            <h6 class="mB-10">SUN</h6>
-                                            <canvas class="sleet" width="30" height="30"></canvas><span class="d-b fw-600">32<sup>°F</sup></span></div>
                                     </div>
                                 </div>
                             </div>
@@ -214,7 +212,6 @@
                         </div>
                         <!--/.box -->
                         <!--chat widget end -->
-
                     </div>
                     <!--div end -->
                 </div>

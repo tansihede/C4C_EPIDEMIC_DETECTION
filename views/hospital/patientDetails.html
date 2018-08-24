@@ -13,23 +13,28 @@
             patientState = document.getElementById("inputState").value
             patientZip = document.getElementById("inputZip").value
 
-            redirectUrl = 'patientName=' + patientName + '&patientAge=' + patientAge + '&patientOccupation=' + patientOccupation + '&patientSymptoms=' + patientSymptoms + '&patientCountry=' + patientCountry + '&patientState=' + patientState + '&patientZip=' + patientZip
+            if (patientName == "" || patientAge == "" || patientOccupation == "" || patientSymptoms == "" || patientCountry == "" || patientState == "" || patientZip == "" ){
+                alert('Please Fill all the form fields')
+            } else {
+                redirectUrl = 'patientName=' + patientName + '&patientAge=' + patientAge + '&patientOccupation=' + patientOccupation + '&patientSymptoms=' + patientSymptoms + '&patientCountry=' + patientCountry + '&patientState=' + patientState + '&patientZip=' + patientZip
 
-            document.getElementById("goToLink").setAttribute("href", "/symptomAnalysis?" + redirectUrl);
-            document.getElementById("goToLink").click();
+                document.getElementById("goToLink").setAttribute("href", "/symptomAnalysis?" + redirectUrl);
+                document.getElementById("goToLink").click();
+            }
         };
     </script>
 
 </head>
  <body class="app">
     <div class="page-container">
+		<div ng-include="'../header/header.html'"></div>
         <main class="main-content bgc-grey-100">
             <div id="mainContent">
                 <div class="masonry-item col-md-6">
                     <div class="bgc-white p-20 bd">
                         <h2 class="c-grey-900">Patient Details</h2>
                         <div class="mT-30">
-                            <form>
+                            <form id="form">
                                 <div class="form-row">
                                     <div class="form-group col-md-9">
                                         <label for="inputEmail4">Patient Name</label>
@@ -68,7 +73,7 @@
                         </div>
                     </div>
                 </div>             
-               <div style="padding-left:60%"> <a href = "/hospital"><< Back to dashboard</a></div>
+               <div style="padding-left:70%"> <a href = "/hospital"><< Back to dashboard</a></div>
             </div>
         </main>
     </div>
