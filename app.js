@@ -117,7 +117,7 @@ app.all('*', function(req, res, next){
   next();
 });
 app.post('/login', userController.login);
-
+app.post('/getregion', userController.getregion);
 /*Added method to get Patient Details */
 
 app.get('/api/getPatients', function (request, response) {
