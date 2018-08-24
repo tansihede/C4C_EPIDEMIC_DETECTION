@@ -29,6 +29,8 @@ var errorHandler = require('errorhandler');
 var multipart = require('connect-multiparty')
 var multipartMiddleware = multipart();
 var userController = require('./controllers/userController');
+var userController = require('./controllers/diseasesController');
+
 
 // all environments
 app.set('port', process.env.PORT || 5000);
@@ -53,6 +55,16 @@ app.use('/user', user);
 if ('development' == app.get('env')) {
     app.use(errorHandler());
 }
+
+ageBreakup=[{
+            'diseaseName': 'Cholera',
+            'symptoms':['Diarrhea','Nausea','Vomiting','Mild to Severe Dehydration'],
+            'ageRange': "30-40"
+        },{
+            'diseaseName': 'Influenza',
+            'symptoms':['High Fever','Running Nose','Sore Throat','Muscle pain','headache','Coughing','Feeling Tired'],
+            'ageRange': "40-50"
+        }];
 
 function getDBCredentialsUrl(jsonData) {
     var vcapServices = JSON.parse(jsonData);
