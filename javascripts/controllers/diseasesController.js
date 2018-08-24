@@ -11,7 +11,7 @@ angular.module('myApp').controller('diseasesController', ['$scope', '$http', fun
             console.log('Error: ' + data);
         });
     }; 
-
+    $scope.userlabel = "John";
     $scope.getpatientDetails();
     $scope.sendMessage = function(number){
 		document.getElementById("ph-Number").value = number;
