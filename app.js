@@ -5,6 +5,7 @@
 var express = require('express'),
     routes = require('./routes'),
     user = require('./routes/user'),
+	login = require('./routes/login'),
     http = require('http'),
     path = require('path'),
     fs = require('fs');
@@ -99,7 +100,10 @@ function initDBConnection() {
 initDBConnection();
 
 app.get('/', routes.index);
-
+app.all('*', function(req, res, next){
+  console.log('(2) route middleware for all method and path pattern "*", executed first and can do stuff before going next');
+  next();
+});
 app.post('/login', userController.login);
 
 /*Added method to get Patient Details */
@@ -236,9 +240,10 @@ app.get('/api/getSymptoms', function (request, response) {
     });
 });
 
-
 app.use(express.static(__dirname));
 exports = module.exports = app;
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
+
+
