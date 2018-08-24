@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Call For code app">
     <meta name="author" content="">
 	<title>Rapid Care - Data platform to combat Disease</title>
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -17,11 +17,43 @@
       <script src="js/respond.min.js"></script>
     <![endif]-->
 
+<script type="text/javascript">
+	function registerVolunteer(){
+		//alert("Works");
+		//document.getElementById("togglePopup").click()
+		document.getElementById("goToLink").setAttribute("href", "/");
+        document.getElementById("goToLink").click();
+	}
+	function showPopup(){
+		//alert("Works");
+		document.getElementById("togglePopup").click()
+		
+	}
 
+</script>
   
 </head>
 <body>
-	
+	<button style="display:none" type="button" id="togglePopup" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content" style="margin-top: 250px;">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Successful!!</h4>
+		  </div>
+		  <div class="modal-body">
+			<p>You are now a Volunteer</p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" onClick="registerVolunteer()" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+
+	  </div>
+	</div>
 	<!-- ====================================================
 	header section -->
 	<header class="top-header">
@@ -52,8 +84,8 @@
 					        <li><a class="menu active" href="#home" >Home</a></li>
 					        <li><a class="menu" href="#about">about us</a></li>
 					        <li><a class="menu" href="#service">our services </a></li>
-					        <li><a class="menu" href="#team">join Our team</a></li>
-					        <li><a class="menu" href="#contact"> contact us</a></li>
+					        <li><a class="menu" href="#team">Experts</a></li>
+					        <li><a class="menu" href="#contact"> join Our team</a></li>
 					      </ul>
 					    </div><!-- /navbar-collapse -->
 					  </div><!-- / .container-fluid -->
@@ -126,7 +158,7 @@
 		<div class="container">
 			<div class="row">
 				<h2>about us</h2>
-				<h4>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</h4>
+				<h4>Dataplatform that helps People Across Geographies in times of natural disasters</h4>
 				<div class="col-md-4 col-sm-6">
 					<div class="single-about-detail clearfix">
 						<div class="about-img">
@@ -299,7 +331,7 @@
 	</section><!-- end of team section -->
 
 	<!-- map section -->
-	<div class="api-map" id="contact">
+	<div class="api-map" id="contact" style="background-color: white;">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12 map" id="map"></div>
@@ -312,35 +344,73 @@
 		<div class="container">
 			<div class="row">
 				<div class="contact-caption clearfix">
-					<div class="contact-heading text-center">
-						<h2>contact us</h2>
-					</div>
-					<div class="col-md-5 contact-info text-left">
-						<h3>contact information</h3>
-						<div class="info-detail">
-							<ul><li><i class="fa fa-calendar"></i><span>Monday - Friday:</span> 9:30 AM to 6:30 PM</li></ul>
-							<ul><li><i class="fa fa-map-marker"></i><span>Address:</span> 123 Some Street , London, UK, CP 123</li></ul>
-							<ul><li><i class="fa fa-phone"></i><span>Phone:</span> (032) 987-1235</li></ul>
-							<ul><li><i class="fa fa-fax"></i><span>Fax:</span> (123) 984-1234</li></ul>
-							<ul><li><i class="fa fa-envelope"></i><span>Email:</span> info@doctor.com</li></ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-md-offset-1 contact-form">
-						<h3>leave us a message</h3>
-
-						<form class="form">
-							<input class="name" type="text" placeholder="Name">
-							<input class="email" type="email" placeholder="Email">
-							<input class="phone" type="text" placeholder="Phone No:">
-							<textarea class="message" name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-							<input class="submit-btn" type="submit" value="SUBMIT">
-						</form>
-					</div>
+					<div class="bgc-white p-20 bd col-md-9">
+                        <h2 class="c-grey-900">Register As Volunteer</h2>
+                        <div class="mT-30">
+                            <form id="form">
+                                <div class="form-row">
+                                    <div class="form-group col-md-9">
+                                        <label for="inputEmail4">Name</label>
+                                        <input type="email" class="form-control" id="inputName" placeholder="Volunteer Name">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputPassword4">Age</label>
+                                        <input type="number" class="form-control" id="inputAge" placeholder="Age">
+                                    </div>
+                                </div>
+                                <div class="form-row col-md-12">
+									<div class="form-group ">
+										<label for="inputAddress">Contact Number</label>
+										<input type="text" class="form-control" id="inputOccupation" pattern="/(7|8|9)\d{9}/">
+									</div>
+									
+									
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="inputAddress2">Specialization</label>
+                                    <input type="text" class="form-control" id="inputSymptoms" placeholder="Doctor, Nurse, etc.">
+                                </div>
+								<div class="form-group col-md-12 ">
+                                       <label for="inputState">Associated with</label> 
+                                       <select id="inputState" class="form-control">
+										  <option selected="selected">None</option>
+                                          <option >Red Cross</option>
+										  <option >Doctors Without Borders</option>
+										  <option >Mennonite Central Committee</option>
+										  <option >Direct Relief</option>
+										  <option >AMURT</option>
+										  <option >International Medical Corps</option>
+										  
+										  
+                                          <option></option>
+                                       </select>
+                                    </div>
+                                <div class="form-row ">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputCity">Country</label>
+                                        <input type="text" class="form-control" id="inputCountry">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputState">State</label>
+                                        <input type="text" class="form-control" id="inputState">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="inputZip">Zip</label>
+                                        <input type="text" class="form-control" id="inputZip">
+                                    </div>
+                                </div>
+								 <div class="form-row" style="    padding-bottom: 50px;text-align: center;padding-top: 56px;">
+									<button type="button"  showPopup onClick="showPopup()" id="submitButton" class="btn btn-primary form-group">Add Volunteer</button>
+                                </div>
+								<a id='goToLink'></a>
+                            </form>
+                        </div>
+                    </div>  
 				</div>
 			</div>
 		</div>
 	</section><!-- end of contact section -->
-
+	
 	<!-- footer starts here -->
 	<footer class="footer clearfix">
 		<div class="container">
@@ -360,8 +430,6 @@
 	<!-- script tags
 	============================================================= -->
 	<script src="js/jquery-2.1.1.js"></script>
-	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-	<script src="js/gmaps.js"></script>
 	<script src="js/smoothscroll.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/custom.js"></script>
