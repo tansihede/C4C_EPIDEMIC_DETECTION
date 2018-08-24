@@ -154,15 +154,30 @@ app.get('/api/getSymptoms', function (request, response) {
     var detectedSystoms = [];
     var maxLength = 0
 
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;    //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd = '0'+ dd
+    } 
+
+    if(mm<10) {
+        mm = '0'+ mm
+    } 
+
+    var todayDate = mm + '-' + dd + '-' + yyyy;
+
     var data = [{
         'diseaseName': 'Cholera',
         'detectedSymptoms': [],
-        'symptoms': ['Diarrhea', 'Nausea', 'Vomiting', 'Dehydration'],
+        'symptoms': ['diarrhoea', 'nausea', 'Vomiting', 'Dehydration','muscle pain','dizziness','loose motions'],
         'ageRange': "30-40"
     }, {
         'diseaseName': 'Influenza',
         'detectedSymptoms': [],
-        'symptoms': ['Fever', 'Running Nose', 'Sore Throat', 'Muscle pain', 'headache', 'Coughing', 'Tired'],
+        'symptoms': ['Fever', 'Runny Nose', 'soar throat', 'Muscle Pain', 'headache', 'Cough', 'Tired', 'Body Pain'],
         'ageRange': "40-50"
     }];
 
@@ -186,7 +201,7 @@ app.get('/api/getSymptoms', function (request, response) {
         if (err)
             console.log('error:', err);
         else {
-            console.log(res['keywords'].length)
+            console.log(res)
             for (i = 0; i < res['keywords'].length; i++) {
                 detectedSystoms.push(res['keywords'][i]['text']);
             }
@@ -195,7 +210,7 @@ app.get('/api/getSymptoms', function (request, response) {
             for (i = 0; i < data.length; i++) {
                 for (j = 0; j< data[i]['symptoms'].length; j++){
                     for (k = 0; k< detectedSystoms.length; k++){
-                        if (detectedSystoms[k].includes(data[i]['symptoms'][j])){
+                        if (data[i]['symptoms'][j].toLowerCase().includes(detectedSystoms[k].toLowerCase()) || detectedSystoms[k].toLowerCase().includes(data[i]['symptoms'][j].toLowerCase())){
                             data[i]['detectedSymptoms'].push(detectedSystoms[k]);
                             maxLength = data[i]['detectedSymptoms'].length
                         }
@@ -216,7 +231,7 @@ app.get('/api/getSymptoms', function (request, response) {
                 }
             }
 
-            dbInsertQuery = { "document_type": "symptoms", "hospital_name": "All India Institute of Medical Sciences", "location": patientCountry, "patient_name": patientName, "patient_age": patientAge, "patient_occ": patientOccupation, "City": patientState, "Symptoms_reported": patientSymptoms, "disease": predictedDisease, "prediction": prediction, "date_updated": "23-08-2018" }
+            dbInsertQuery = { "document_type": "symptoms", "hospital_name": "All India Institute of Medical Sciences", "location": patientCountry, "patient_name": patientName, "patient_age": patientAge, "patient_occ": patientOccupation, "City": patientState, "Symptoms_reported": patientSymptoms, "disease": predictedDisease, "prediction": prediction, "date_updated": todayDate }
             console.log(dbInsertQuery)
 
             db = cloudant.use(dbCredentials.dbName);
