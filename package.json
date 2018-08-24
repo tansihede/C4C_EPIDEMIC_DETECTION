@@ -6,6 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "angular": "1.3.x",
     "body-parser": "1.17.x",
     "chart.js": "^2.7.2",
     "cloudant": "1.7.x",
@@ -15,8 +16,8 @@
     "express": "4.15.x",
     "method-override": "2.3.x",
     "morgan": "1.8.x",
-    "angular": "1.3.x",
-    "tag-cloud": "^1.1.4"
+    "tag-cloud": "^1.1.4",
+    "watson-developer-cloud": "^3.9.0"
   },
   "repository": {},
   "engines": {
