@@ -1,33 +1,30 @@
 
-var myAppModule = angular.module('myApp', ['ngRoute','ngTagCloud']);
+var myAppModule = angular.module('myApp', ['ngRoute','ngTagCloud','datatables']);
 
 myAppModule.config(function($routeProvider,$locationProvider) {  
     $routeProvider
 
-        .when('/email', {
-            templateUrl: 'views/email.html',
-            controller: 'dashboardController'        // correct controller to be changed
-        }).when('/login', {
+         .when('/:name/login', {
             templateUrl: 'views/login/signin.html',
             controller: 'userController'
-        }).when('/outbreak', {
+        }).when('/ngo/outbreak', {
             templateUrl: 'views/diseases/outbreak.html',
             controller: 'diseasesController'
         }).when('/', {                                        
-            templateUrl: 'views/login/signin.html',
+        	templateUrl: 'views/landing.html',
             controller: 'userController'
-        }).when('/dashboard', {
+        }).when('/ngo/dashboard', {
             templateUrl: 'views/dashboard/dashboard.html',
             controller: 'dashboardController'
-        }).when('/hospital', {
+        }).when('/hospital/dashboard', {
             templateUrl: 'views/hospital/hospitalDashboard.html',
             controller: 'hospitalDashboardController'
-        }).when('/patientDetails', {
+        }).when('/hospital/patientDetails', {
             templateUrl: 'views/hospital/patientDetails.html',
-            controller: 'userController'                    // correct controller to be changed
-        }).when('/symptomAnalysis', {
+            controller: 'userController'                   
+        }).when('/hospital/symptomAnalysis', {
             templateUrl: 'views/hospital/symptomAnalysis.html',
-            controller: 'symptomController'                    // correct controller to be changed
+            controller: 'symptomController'                   
         }).
     otherwise({redirectTo:'/'})
 
