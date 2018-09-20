@@ -1,32 +1,13 @@
-angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$http', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', function ($scope, $http, $compile, DTOptionsBuilder, DTColumnBuilder) {
+angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$http','$compile', 'DTOptionsBuilder', 'DTColumnBuilder', function ($scope, $http, $compile, DTOptionsBuilder, DTColumnBuilder) {
 
-
-
-    /*    $scope.getpatientDetails = function () {
-
-            $http.get('/api/getPatients').success(function (data) {
-                $scope.result = data.result;
-                console.log(JSON.stringify(data));
-
-            }).error(function (data) {            
-                console.log('Error: ' + data);
-            });
-        }; 
-    	$scope.sendMessage = function(number){
-    		document.getElementById("ph-Number").value = number;
-
-    	}
-        $scope.getpatientDetails();*/
-
-
-
+	$scope.loaded = true;
 
     $scope.getpatientDetails = function () {
-           $scope.loading = true;
-        $http.get('/api/getPatients').success(function (data) {
+     
+    	$http.get('/api/getPatients').success(function (data) {
             $scope.result = data.result;
             console.log(JSON.stringify(data.result[0]));
-           // $scope.columnsReady = true;
+
             var dataResults = [];
             for (var i = 0 in $scope.result) {
                 dataResults.push({
@@ -48,24 +29,25 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
 
 
             $scope.dtColumns = dtColumns //headers
-              $scope.loading = false;
+           
             //create options
             $scope.dtOptions = DTOptionsBuilder.newOptions()
                 .withOption('data', dataResults)
                 .withPaginationType('full_numbers')
                 .withDisplayLength('5')
-                .withOption('lengthMenu',[5,10,15])
-                /*withOption('lengthMenu', [5, 10, 15, 20, 25,-1]) */
-    
+                .withOption('lengthMenu',[5,10,15])                   
+            
             //initialize the dataTable
             angular.element('#example').attr('datatable', '')
             $compile(angular.element('#example'))($scope)
+           
+            $scope.loaded = false;
             
         }).error(function (data) {
             console.log('Error: ' + data);
         });
     };
-
+    
     $scope.getpatientDetails();
 
 }]);

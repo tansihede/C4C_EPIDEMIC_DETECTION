@@ -3,7 +3,7 @@
  <head>
     <meta charset="utf-8">
     
-    <script type="text/javascript">
+ <!--    <script type="text/javascript">
         document.getElementById("submitButton").onclick = function () {
             patientName = document.getElementById("inputName").value
             patientAge = document.getElementById("inputAge").value
@@ -22,57 +22,101 @@
                 document.getElementById("goToLink").click();
             }
         };
-    </script>
+    </script> -->
 
 </head>
  <body class="app">
-    <div class="page-container">
+   
+  <!--  <div id='loader' ng-show="loaded">
+      <div class="spinner"></div>
+    </div> 
+    -->
+    <div class="page-container" style="padding-left:0px">
 		<div ng-include="'../header/header.html'"></div>
         <main class="main-content bgc-grey-100">
-            <div id="mainContent">
+            <div id="mainContent" class="row">
                 <div class="masonry-item col-md-6">
                     <div class="bgc-white p-20 bd">
                         <h2 class="c-grey-900">Patient Details</h2>
                         <div class="mT-30">
-                            <form id="form">
+                            <form id="form" ng-submit="getSymptoms()">
                                 <div class="form-row">
                                     <div class="form-group col-md-9">
                                         <label for="inputEmail4">Patient Name</label>
-                                        <input type="email" class="form-control" id="inputName" placeholder="patient Name">
+                                        <input type="text" class="form-control" id="inputName" placeholder="patient Name" ng-model="inputName" name="inputName">
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="inputPassword4">Age</label>
-                                        <input type="number" class="form-control" id="inputAge" placeholder="Age">
+                                        <input type="number" class="form-control" id="inputAge" placeholder="Age" ng-model="inputAge" name="inputAge"  >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAddress">Occupation</label>
-                                    <input type="text" class="form-control" id="inputOccupation" placeholder="Factory Worker, Farmer, etc.">
+                                    <input type="text" class="form-control" id="inputOccupation" placeholder="Factory Worker, Farmer, etc." ng-model="inputOccupation" name="inputOccupation">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAddress2">Symptoms</label>
-                                    <input type="text" class="form-control" id="inputSymptoms" placeholder="Headache, Back pain, etc.">
+                                    <input type="text" class="form-control" id="inputSymptoms" placeholder="Headache, Back pain, etc." ng-model="inputSymptoms"  name="inputSymptoms">
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputCity">Country</label>
-                                        <input type="text" class="form-control" id="inputCountry">
+                                        <input type="text" class="form-control" id="inputCountry" ng-model="inputCountry" name="inputCountry">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="inputState">State</label>
-                                        <input type="text" class="form-control" id="inputState">
+                                        <input type="text" class="form-control" id="inputState" ng-model="inputState"  name="inputState">
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="inputZip">Zip</label>
-                                        <input type="text" class="form-control" id="inputZip">
+                                        <input type="text" class="form-control" id="inputZip" ng-model="inputZip" name="inputZip">
                                     </div>
                                 </div>
-                                <button type="button" id="submitButton" class="btn btn-primary">Submit Case</button>
-                                <a id='goToLink'></a>
+                                <button type="submit" id="submitButton" class="btn btn-primary" >Submit Case</button>
+                             <!--    <a id='goToLink'></a -->
                             </form>
                         </div>
                     </div>
-                </div>             
+                </div>    
+                
+                        <div class="col-md-6" ng-show="success_true"> 
+                                <div class="bgc-white bd bdrs-3 p-20 mB-20">
+                                    <p>Thank You For Submitting the case with us.<br />
+                                    Following are the analysis performed by the platform based on parameters provided and the cases reported in your area</p>
+                                    <table class="table table-bordered">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Disease</th>
+                                                <th scope="col">Common Symptoms</th>
+                                                <th scope="col">Depicted Symptoms</th>
+                                                <th scope="col">Age Range</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in result">
+                                                <th scope="row">{{item.diseaseName}}</th>
+                                                <td>
+                                                    <span ng-repeat="sym in item.symptoms">
+                                                        {{sym}}<br />
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span ng-repeat="sym in item.detectedSymptoms">
+                                                        {{sym}}<br />
+                                                    </span>
+                                                </td>
+                                                <td>{{item.ageRange}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p>In Case of further data like test kits and further support please connect.</p>
+                                </div>
+                            </div>
+                
+                
+                
+                
+                    
                <div style="padding-left:70%"> <a href = "/hospital/dashboard"><< Back to dashboard</a></div>
             </div>
         </main>

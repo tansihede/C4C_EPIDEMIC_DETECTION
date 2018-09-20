@@ -1,15 +1,17 @@
 <head>
 
-   <style>
+<!--    <style>
         .users-list>li img {
             border-radius: 50%;
             max-width: 100%;
             height: auto;
         }
-    </style>
+        
 
-  <!--  <style>
-        /*.loading { border:1px solid #ddd; padding:20px; margin:40px 5px; width:80px;}*/
+    </style> -->
+
+ <style>
+       
         
         #loader {
             transition: all .3s ease-in-out;
@@ -67,17 +69,20 @@
             height: auto;
         }
     </style>
--->
+
 </head>
 
 <body>
+
+<div id='loader' ng-show="loaded">
+      <div class="spinner"></div>
+    </div> 
+
      <div ng-include="'../header/header.html'"></div>
     <div>
         <main class="main-content bgc-grey-100">
             <div id="mainContent">
-               
-
-                <div class="row gap-20">
+              <div class="row gap-20">
                     <div class="col-md-3">
                         <div class="layers bd bgc-white p-20">
                             <div class="layer w-100 mB-10">

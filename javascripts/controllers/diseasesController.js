@@ -1,12 +1,12 @@
 angular.module('myApp').controller('diseasesController', ['$scope', '$http', function ($scope, $http) {
 
-  /*  alert("fine");*/
+    $scope.loaded = true ; 
 	$scope.getpatientDetails = function () {
 
         $http.get('/api/getPatients').success(function (data) {
             $scope.result = data.result;
             console.log(JSON.stringify(data));
-
+            $scope.loaded = false ; 
         }).error(function (data) {            
             console.log('Error: ' + data);
         });

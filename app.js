@@ -161,112 +161,110 @@ app.get('/api/getPatients', function (request, response) {
 
 app.get('/api/getSymptoms', function (request, response) {
 
-    var patientName = request.param('patientName');
-    var patientAge = request.param('patientAge');
-    var patientOccupation = request.param('patientOccupation');
-    var patientSymptoms = request.param('patientSymptoms');
-    var patientCountry = request.param('patientCountry');
-    var patientState = request.param('patientState');
-    var patientZip = request.param('patientZip');
-    var detectedSystoms = [];
-    var maxLength = 0
+	    var patientName = request.query.patientName;
+	    var patientAge = request.query.patientAge;
+	    var patientOccupation = request.query.patientOccupation;
+	    var patientSymptoms = request.query.patientSymptoms;
+	    var patientCountry = request.query.patientCountry;
+	    var patientState = request.query.patientState;
+	    var patientZip = request.query.patientZip;
+	    var detectedSystoms = [];
+	    var maxLength = 0
 
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1;    //January is 0!
-    var yyyy = today.getFullYear();
+	    var today = new Date();
+	    var dd = today.getDate();
+	    var mm = today.getMonth()+1;    //January is 0!
+	    var yyyy = today.getFullYear();
 
-    if(dd<10) {
-        dd = '0'+ dd
-    } 
+	    if(dd<10) {
+	        dd = '0'+ dd
+	    } 
 
-    if(mm<10) {
-        mm = '0'+ mm
-    } 
+	    if(mm<10) {
+	        mm = '0'+ mm
+	    } 
 
-    var todayDate = mm + '-' + dd + '-' + yyyy;
+	    var todayDate = mm + '-' + dd + '-' + yyyy;
 
-    var data = [{
-        'diseaseName': 'Cholera',
-        'detectedSymptoms': [],
-        'symptoms': ['diarrhoea', 'nausea', 'Vomiting', 'Dehydration','muscle pain','dizziness','loose motions'],
-        'ageRange': "30-40"
-    }, {
-        'diseaseName': 'Influenza',
-        'detectedSymptoms': [],
-        'symptoms': ['Fever', 'Runny Nose', 'soar throat', 'Muscle Pain', 'headache', 'Cough', 'Tired', 'Body Pain'],
-        'ageRange': "40-50"
-    }];
+	    var data = [{
+	        'diseaseName': 'Cholera',
+	        'detectedSymptoms': [],
+	        'symptoms': ['diarrhoea', 'nausea', 'Vomiting', 'Dehydration','muscle pain','dizziness','loose motions'],
+	        'ageRange': "30-40"
+	    }, {
+	        'diseaseName': 'Influenza',
+	        'detectedSymptoms': [],
+	        'symptoms': ['Fever', 'Runny Nose', 'soar throat', 'Muscle Pain', 'headache', 'Cough', 'Tired', 'Body Pain'],
+	        'ageRange': "40-50"
+	    }];
 
-    var parameters = {
-        'text': patientSymptoms,
-        'features': {
-            'keywords': {
-            }
-        }
-    };
+	    var parameters = {
+	        'text': patientSymptoms,
+	        'features': {
+	            'keywords': {
+	            }
+	        }
+	    };
 
-    var naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
-        version: '2018-03-16',
-        username: '204c4562-2e1e-4f53-9330-9714eab0140c',
-        password: 'PTmWCKqrjAoJ',
-        url: 'https://gateway.watsonplatform.net/natural-language-understanding/api'
-    });
-
-
-    naturalLanguageUnderstanding.analyze(parameters, function (err, res) {
-        if (err)
-            console.log('error:', err);
-        else {
-            console.log(res)
-            for (i = 0; i < res['keywords'].length; i++) {
-                detectedSystoms.push(res['keywords'][i]['text']);
-            }
-
-            // Find Disease based on Symptoms
-            for (i = 0; i < data.length; i++) {
-                for (j = 0; j< data[i]['symptoms'].length; j++){
-                    for (k = 0; k< detectedSystoms.length; k++){
-                        if (data[i]['symptoms'][j].toLowerCase().includes(detectedSystoms[k].toLowerCase()) || detectedSystoms[k].toLowerCase().includes(data[i]['symptoms'][j].toLowerCase())){
-                            data[i]['detectedSymptoms'].push(detectedSystoms[k]);
-                            maxLength = data[i]['detectedSymptoms'].length
-                        }
-                    }
-                }
-            }
-
-            var prediction = {}
-            var predictedDisease = ''
-            var MaxPercent = 0
-            // Compute Prediction
-            for (i = 0; i < data.length; i++) {
-                var percent = (data[i]['detectedSymptoms'].length * 100)/maxLength
-                prediction[data[i]['diseaseName']] = percent;
-
-                if (percent > MaxPercent){
-                    predictedDisease = data[i]['diseaseName']
-                }
-            }
-
-            dbInsertQuery = { "document_type": "symptoms", "hospital_name": "All India Institute of Medical Sciences", "location": patientCountry, "patient_name": patientName, "patient_age": patientAge, "patient_occ": patientOccupation, "City": patientState, "Symptoms_reported": patientSymptoms, "disease": predictedDisease, "prediction": prediction, "date_updated": todayDate }
-            console.log(dbInsertQuery)
-
-            db = cloudant.use(dbCredentials.dbName);
-            db.insert(dbInsertQuery, function (er, result) {
-                if (er) {
-                    throw er;
-                }
-
-                return response.json({ result: data });
-                console.log('ending response...');
-                response.end();
-            });
+	    var naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
+	        version: '2018-03-16',
+	        username: '204c4562-2e1e-4f53-9330-9714eab0140c',
+	        password: 'PTmWCKqrjAoJ',
+	        url: 'https://gateway.watsonplatform.net/natural-language-understanding/api'
+	    });
 
 
+	    naturalLanguageUnderstanding.analyze(parameters, function (err, res) {
+	        if (err)
+	            console.log('error:', err);
+	        else {
+	            console.log(res)
+	            for (i = 0; i < res['keywords'].length; i++) {
+	                detectedSystoms.push(res['keywords'][i]['text']);
+	            }
 
-        }
-    });
-});
+	            // Find Disease based on Symptoms
+	            for (i = 0; i < data.length; i++) {
+	                for (j = 0; j< data[i]['symptoms'].length; j++){
+	                    for (k = 0; k< detectedSystoms.length; k++){
+	                        if (data[i]['symptoms'][j].toLowerCase().includes(detectedSystoms[k].toLowerCase()) || detectedSystoms[k].toLowerCase().includes(data[i]['symptoms'][j].toLowerCase())){
+	                            data[i]['detectedSymptoms'].push(detectedSystoms[k]);
+	                            maxLength = data[i]['detectedSymptoms'].length
+	                        }
+	                    }
+	                }
+	            }
+
+	            var prediction = {}
+	            var predictedDisease = ''
+	            var MaxPercent = 0
+	            // Compute Prediction
+	            for (i = 0; i < data.length; i++) {
+	                var percent = (data[i]['detectedSymptoms'].length * 100)/maxLength
+	                prediction[data[i]['diseaseName']] = percent;
+
+	                if (percent > MaxPercent){
+	                    predictedDisease = data[i]['diseaseName']
+	                }
+	            }
+
+	            dbInsertQuery = { "document_type": "symptoms", "hospital_name": "All India Institute of Medical Sciences", "location": patientCountry, "patient_name": patientName, "patient_age": patientAge, "patient_occ": patientOccupation, "City": patientState, "Symptoms_reported": patientSymptoms, "disease": predictedDisease, "prediction": prediction, "date_updated": todayDate }
+	            console.log(dbInsertQuery)
+
+	            db = cloudant.use(dbCredentials.dbName);
+	            db.insert(dbInsertQuery, function (er, result) {
+	                if (er) {
+	                    throw er;
+	                }
+
+	                return response.json({ result: data });
+	                console.log('ending response...');
+	                response.end();
+	            });
+	        }
+	    });
+	});
+
 
 app.use(express.static(__dirname));
 

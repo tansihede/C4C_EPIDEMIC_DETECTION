@@ -1,21 +1,36 @@
 angular.module('myApp').controller('symptomController', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
 
-	 
-    $scope.getSymptoms = function () {
+	
+//	$scope.loaded = true;
+	$scope.success_true = false;
+    $scope.result = {};
+    
+	$scope.getSymptoms = function () {
 
-        console.log($routeParams)
+		
+		var patientdata = { 
+				       'patientName' : $scope.inputName ,
+				       'patientAge':  $scope.inputAge ,
+				       'patientOccupation' : $scope.inputOccupation,
+				       'patientSymptoms' : $scope.inputSymptoms,
+				       'patientCountry' : $scope.inputCountry,
+				       'patientState' : $scope.inputState,
+				       'patientZip' : $scope.inputZip 
+				       };
+		
+		  $http({
+	            method : "GET",
+	            url : "/api/getSymptoms",
+	            params: patientdata
+	          }).then(function mySuccess(data) {
+	        	  $scope.result = data.data.result;
+	        	  $scope.success_true = true;
+	        	  console.log(data);
+	            }, function myError(data) {
+	            	 console.log('Error: ' + JSON.stringify(data));
+	          }); 
+		  
+    };
 
-        var redirectUrl = 'patientName=' + $routeParams.patientName + '&patientAge=' + $routeParams.patientAge + '&patientOccupation=' + $routeParams.patientOccupation + '&patientSymptoms=' + $routeParams.patientSymptoms + '&patientCountry=' + $routeParams.patientCountry + '&patientState=' + $routeParams.patientState + '&patientZip=' + $routeParams.patientZip
-
-        $http.get('/api/getSymptoms?' + redirectUrl).success(function (data) {
-            $scope.result = data.result;
-            console.log(JSON.stringify(data));
-
-        }).error(function (data) {            
-            console.log('Error: ' + data);
-        });
-    }; 
-
-    $scope.getSymptoms();
 
 }]);

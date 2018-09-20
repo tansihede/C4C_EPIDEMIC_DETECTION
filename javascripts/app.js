@@ -21,12 +21,11 @@ myAppModule.config(function($routeProvider,$locationProvider) {
             controller: 'hospitalDashboardController'
         }).when('/hospital/patientDetails', {
             templateUrl: 'views/hospital/patientDetails.html',
-            controller: 'userController'                   
+            controller: 'symptomController'                   
         }).when('/hospital/symptomAnalysis', {
             templateUrl: 'views/hospital/symptomAnalysis.html',
             controller: 'symptomController'                   
-        }).
-    otherwise({redirectTo:'/'})
+        }).otherwise({redirectTo:'/'})
 
     
 $locationProvider.html5Mode({
