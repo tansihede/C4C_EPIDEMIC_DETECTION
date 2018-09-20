@@ -261,10 +261,47 @@ app.get('/api/getSymptoms', function (request, response) {
 	                console.log('ending response...');
 	                response.end();
 	            });
+	            
+	            
+	            
 	        }
 	    });
 	});
 
+
+app.post('/api/addVolunteer', function (request, response) {
+    console.log("Post method invoked.. ")
+    console.log(request.body);
+    var newVaolunteer=request.body;
+		
+    dbInsertQuery = { 
+					  "document_type": "volunteer", 
+					  "name": newVaolunteer.name, 
+					  "age": newVaolunteer.age, 
+					  "contact":newVaolunteer.contact, 
+					  "specialization": newVaolunteer.specialization, 
+					  "associatedWith": newVaolunteer.associatedWith, 
+					  "country": newVaolunteer.country, 
+					  "state": newVaolunteer.state,
+					  "zip":newVaolunteer.zip,
+					  "userName":newVaolunteer.userName,
+					  "password":newVaolunteer.password 	
+					}
+            console.log(dbInsertQuery)
+
+            db = cloudant.use(dbCredentials.dbName);
+            db.insert(dbInsertQuery, function (er, result) {
+                if (er) {
+                    throw er;
+                }
+
+                //return response.json({ result: data });
+                console.log('ending response...');
+                response.end();
+     });
+	// response.send('POST request to the homepage')
+	
+});
 
 app.use(express.static(__dirname));
 
