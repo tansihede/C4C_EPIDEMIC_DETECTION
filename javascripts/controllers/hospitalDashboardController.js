@@ -63,7 +63,7 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
         });
     };
 
-    // $scope.getpatientDetails();
+    $scope.getpatientDetails();
     $scope.queryBlockchain();
 
 }]);
