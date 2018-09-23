@@ -13,7 +13,22 @@ angular.module('myApp').controller('diseasesController', ['$scope', '$http', fun
     }; 
     $scope.userlabel = "John";
     $scope.getpatientDetails();
-    $scope.sendMessage = function(number){
+    $scope.getVolunteerDetails = function () {
+
+        $http.get('/api/getVolunteers').success(function (data) {
+		    debugger;
+            $scope.volunteers = data.result;
+            console.log("Volunteer");
+            console.log(JSON.stringify(data));
+            $scope.loaded = false ; 
+        }).error(function (data) {            
+            console.log('Error: ' + data);
+        });
+    };
+	$scope.getVolunteerDetails();
+	
+	
+	$scope.sendMessage = function(number){
 		document.getElementById("ph-Number").value = number;
 
 	}

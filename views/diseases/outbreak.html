@@ -201,46 +201,12 @@
 													<!-- /.box-header -->
 													<div class="box-body no-padding">
 														<ul class="users-list clearfix">
-															<li>
-																<img src="/public/images/user1-128x128.jpg" alt="User Image">
-																<a class="users-list-name" ng-click="sendMessage('+91 7720238787')" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Alexander Pierce</a>
-																<span class="users-list-date">Today</span>
+															<li ng-repeat="volunteer in volunteers">
+																<img src="/public/images/ngo.png" alt="User Image">
+																<a class="users-list-name" ng-click="sendMessage(volunteer.contact)" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">{{volunteer.name}}</a>
+																<span class="users-list-date">{{volunteer.associatedWith}}</span>
 															</li>
-															<li>
-																<img src="/public/images/user8-128x128.jpg" alt="User Image">
-																<a class="users-list-name" class="btn btn-primary"  ng-click="sendMessage('+92 8220238787')"  data-toggle="modal" data-target="#emailModal" href="#">Norman</a>
-																<span class="users-list-date">Yesterday</span>
-															</li>
-															<li>
-																<img src="/public/images/user7-128x128.jpg" alt="User Image">
-																<a class="users-list-name" class="btn btn-primary"  ng-click="sendMessage('+94 9420238787')"  data-toggle="modal" data-target="#emailModal" href="#">Jane</a>
-																<span class="users-list-date">12 Jan</span>
-															</li>
-															<li>
-																<img src="/public/images/user6-128x128.jpg" alt="User Image">
-																<a class="users-list-name"  class="btn btn-primary"  ng-click="sendMessage('+96 9320238787')"  data-toggle="modal" data-target="#emailModal"href="#">John</a>
-																<span class="users-list-date">12 Jan</span>
-															</li>
-															<li>
-																<img src="/public/images/user2-160x160.jpg" alt="User Image">
-																<a class="users-list-name" ng-click="sendMessage('+96 9120238787')" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Alexander</a>
-																<span class="users-list-date">13 Jan</span>
-															</li>
-															<li>
-																<img src="/public/images/user5-128x128.jpg" alt="User Image">
-																<a class="users-list-name" ng-click="sendMessage('+96 7700231287')" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Sarah</a>
-																<span class="users-list-date">14 Jan</span>
-															</li>
-															<li>
-																<img src="/public/images/user4-128x128.jpg" alt="User Image">
-																<a class="users-list-name" class="btn btn-primary"  ng-click="sendMessage('+91 8020238787')"  data-toggle="modal" data-target="#emailModal" href="#">Nora</a>
-																<span class="users-list-date">15 Jan</span>
-															</li>
-															<li>
-																<img src="/public/images/user3-128x128.jpg" alt="User Image">
-																<a class="users-list-name" ng-click="sendMessage('+96 9120238787')" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Nadia</a>
-																<span class="users-list-date">15 Jan</span>
-															</li>
+															
 														</ul>
 														<!-- /.users-list -->
 													</div>
@@ -277,6 +243,8 @@
 						  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					   </div>
 					   <div class="modal-body">
+							<input type="checkbox"  id="requestSupply" checked />
+							<label >Request Supply</label>
 							<div class="email-compose">
 							 <div class="d-n@md+ p-20"><a class="email-side-toggle c-grey-900 cH-blue-500 td-n" href="javascript:void(0)"><i class="ti-menu"></i></a></div>
 							 <form class="email-compose-body">

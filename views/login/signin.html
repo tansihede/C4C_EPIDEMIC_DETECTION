@@ -95,13 +95,93 @@
                         </div>
                         <div class="peer">
                          <button class="btn btn-primary" type="submit" ng-disabled="loginForm.$invalid" >Login</button>
+						 <a  ng-click="sendMessage('+91 7720238787')" class="btn btn-primary" data-toggle="modal" data-target="#registerModal" href="#">Register</a>
+																<span class="users-list-date">Today</span>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-	
+	<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				 <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  
+						<div class="page-container" style="padding-left:0px;padding-top: 15px;">
+						
+						<main class="main-content bgc-grey-100" style="padding-top: 15px;">
+							<div id="mainContent" class="row">
+								<div class="masonry-item col-md-12">
+									<div class="bgc-white p-20 bd">
+										<h2 class="c-grey-900">Hospital Registration</h2>
+										<div class="mT-30">
+											<form id="form" ng-submit="getSymptoms()">
+												<div class="form-row">
+													<div class="form-group col-md-12">
+														<label for="inputEmail4">Name</label>
+														<input type="text" class="form-control" id="inputName" placeholder="patient Name" ng-model="inputName" name="inputName">
+													</div>
+												</div>
+												<div class="form-row">
+													<div class="form-group col-md-12">
+														<label for="inputPassword4">Contact No</label>
+														<input type="text" class="form-control" id="inputPhno" placeholder="Ph-number" ng-model="inputAge" name="inputAge"  >
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label for="inputAddress2">Description</label>
+													<input type="text" class="form-control" id="inputSymptoms" placeholder="Specailization in?" ng-model="inputSymptoms"  name="inputSymptoms">
+												</div>
+												<div class="form-row">
+													<div class="form-group col-md-6">
+														<label for="inputCity">Country</label>
+														<input type="text" class="form-control" id="inputCountry" ng-model="inputCountry" name="inputCountry">
+													</div>
+													<div class="form-group col-md-4">
+														<label for="inputState">State</label>
+														<input type="text" class="form-control" id="inputState" ng-model="inputState"  name="inputState">
+													</div>
+													<div class="form-group col-md-2">
+														<label for="inputZip">Zip</label>
+														<input type="text" class="form-control" id="inputZip" ng-model="inputZip" name="inputZip">
+													</div>
+												</div>
+												<div class="form-row">
+													<div class="form-group col-md-12">
+														<label for="inputUserName">User Name</label>
+														<input type="text" class="form-control" id="inputUserName" placeholder="User name" ng-model="inputName" name="inputName">
+													</div>
+												</div>
+												<div class="form-row">
+													<div class="form-group col-md-6">
+														<label for="inputPassword4">Password</label>
+														<input type="text" class="form-control" id="inputPassword4" placeholder="Ph-number" ng-model="inputAge" name="inputAge"  >
+													</div>
+												
+												
+													<div class="form-group col-md-6">
+														<label for="inputCofirmPassword4">Confirm Passsword</label>
+														<input type="text" class="form-control" id="inputCofirmPassword4" placeholder="Ph-number" ng-model="inputAge" name="inputAge"  >
+													</div>
+												</div>
+												<div class="text-right mrg-top-30"><button class="btn btn-danger" data-dismiss="modal">Send</button></div>
+											 <!--    <a id='goToLink'></a -->
+											</form>
+										</div>
+									</div>
+								</div>    
+								
+										
+						   
+							   <!-- <div style="padding-left:35%"> <a href = "/hospital/dashboard"><< Back to dashboard</a></div> -->
+							</div> 
+						
+						</main>		 
+					</div>
+				 </div>
+			  </div>
+		 </div>  
   <script type="text/javascript" src="vendor.js"></script>
     <script type="text/javascript" src="bundle.js"></script>
 </body>
