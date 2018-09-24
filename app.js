@@ -341,6 +341,39 @@ app.post('/api/addVolunteer', function (request, response) {
 	
 });
 
+
+app.post('/api/addHospital', function (request, response) {
+    console.log("Post method invoked.. ")
+    console.log(request.body);
+    var newHospital=request.body;
+		
+    dbInsertQuery = { 
+					  "document_type": "hospital", 
+					  "name": newHospital.name, 
+					  "contact":newHospital.phno, 
+					  "specialization": newHospital.specialization, 
+					  "country": newHospital.country, 
+					  "state": newHospital.state,
+					  "zip":newHospital.zip,
+					  "userName":newHospital.userName,
+					  "password":newHospital.password 	
+					}
+            console.log(dbInsertQuery)
+
+            db = cloudant.use(dbCredentials.dbName);
+            db.insert(dbInsertQuery, function (er, result) {
+                if (er) {
+                    throw er;
+                }
+
+                //return response.json({ result: data });
+                console.log('ending response...');
+                response.end();
+     });
+	// response.send('POST request to the homepage')
+	
+});
+
 app.use(express.static(__dirname));
 
 app.get('*', function(req, res) {

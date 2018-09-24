@@ -4,8 +4,11 @@ var myAppModule = angular.module('myApp', ['ngRoute','ngTagCloud','datatables'])
 myAppModule.config(function($routeProvider,$locationProvider) {  
     $routeProvider
 
-         .when('/:name/login', {
-            templateUrl: 'views/login/signin.html',
+         .when('/ngo/login', {
+            templateUrl: 'views/login/ngoSignin.html',
+            controller: 'userController'
+        }).when('/hospital/login', {
+            templateUrl: 'views/login/hospitalSignin.html',
             controller: 'userController'
         }).when('/ngo/outbreak', {
             templateUrl: 'views/diseases/outbreak.html',

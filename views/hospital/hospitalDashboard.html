@@ -239,7 +239,7 @@
                                 <h3 class="box-title">Talk to early Responders</h3>
 
                                 <div class="box-tools pull-right">
-                                    <span class="label label-danger">8 New Members</span>
+                                   
                                     <!-- <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
@@ -249,47 +249,12 @@
                             <!-- /.box-header -->
                             <div class="box-body no-padding">
                                 <ul class="users-list clearfix">
-															<li>
-																<img src="/public/images/user1-128x128.jpg" alt="User Image">
-																<a class="users-list-name" ng-click="sendMessage('+91 7720238787')" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Alexander Pierce</a>
-																<span class="users-list-date">Today</span>
-															</li>
-															<li>
-																<img src="/public/images/user8-128x128.jpg" alt="User Image">
-																<a class="users-list-name" class="btn btn-primary"  ng-click="sendMessage('+92 8220238787')"  data-toggle="modal" data-target="#emailModal" href="#">Norman</a>
-																<span class="users-list-date">Yesterday</span>
-															</li>
-															<li>
-																<img src="/public/images/user7-128x128.jpg" alt="User Image">
-																<a class="users-list-name" class="btn btn-primary"  ng-click="sendMessage('+94 9420238787')"  data-toggle="modal" data-target="#emailModal" href="#">Jane</a>
-																<span class="users-list-date">12 Jan</span>
-															</li>
-															<li>
-																<img src="/public/images/user6-128x128.jpg" alt="User Image">
-																<a class="users-list-name"  class="btn btn-primary"  ng-click="sendMessage('+96 9320238787')"  data-toggle="modal" data-target="#emailModal"href="#">John</a>
-																<span class="users-list-date">12 Jan</span>
-															</li>
-															<li>
-																<img src="/public/images/user2-160x160.jpg" alt="User Image">
-																<a class="users-list-name" ng-click="sendMessage('+96 9120238787')" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Alexander</a>
-																<span class="users-list-date">13 Jan</span>
-															</li>
-															<li>
-																<img src="/public/images/user5-128x128.jpg" alt="User Image">
-																<a class="users-list-name" ng-click="sendMessage('+96 7700231287')" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Sarah</a>
-																<span class="users-list-date">14 Jan</span>
-															</li>
-															<li>
-																<img src="/public/images/user4-128x128.jpg" alt="User Image">
-																<a class="users-list-name" class="btn btn-primary"  ng-click="sendMessage('+91 8020238787')"  data-toggle="modal" data-target="#emailModal" href="#">Nora</a>
-																<span class="users-list-date">15 Jan</span>
-															</li>
-															<li>
-																<img src="/public/images/user3-128x128.jpg" alt="User Image">
-																<a class="users-list-name" ng-click="sendMessage('+96 9120238787')" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">Nadia</a>
-																<span class="users-list-date">15 Jan</span>
-															</li>
-														</ul>
+                                    <li ng-repeat="volunteer in volunteers">
+                                        <img src="/public/images/ngo.png" alt="User Image">
+                                        <a class="users-list-name" ng-click="showMessagePopup(volunteer.contact,volunteer.associatedWith)" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" href="#">{{volunteer.name}}</a>
+                                        <span class="users-list-date">{{volunteer.associatedWith}}</span>
+                                    </li>
+								</ul>
                                 <!-- /.users-list -->
                             </div>
                             <!-- /.box-body -->
@@ -305,29 +270,34 @@
                 </div>
             </div>
             
-            	<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				 <div class="modal-dialog" role="document">
-					<div class="modal-content">
-					   <div class="modal-header">
-						  <h4 class="c-grey-900 mB-20">Send Message</h4>
-						  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					   </div>
-						  <div class="modal-body">
-								<div class="email-compose">
-								 <div class="d-n@md+ p-20"><a class="email-side-toggle c-grey-900 cH-blue-500 td-n" href="javascript:void(0)"><i class="ti-menu"></i></a></div>
-								 <form class="email-compose-body">
-									<div class="send-header">
-									   <div class="form-group"><input type="text" class="form-control" id="ph-Number" ></div>
-									   <div class="form-group"><textarea name="compose" class="form-control" placeholder="Hi..." rows="10"></textarea></div>
-									</div>
-									<div id="compose-area"></div>
-									<div class="text-right mrg-top-30"><button class="btn btn-danger" data-dismiss="modal">Send</button></div>
-								 </form>
-							  </div>
-						   </div>
-					</div>
-				 </div>
-			  </div>
+            <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                   <div class="modal-content">
+                      <div class="modal-header">
+                         <h4 class="c-grey-900 mB-20">Send Message</h4>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      </div>
+                      <div class="modal-body">
+                           <input type="checkbox"  id="requestSupply" checked />
+                           <label >Request Supply</label>
+                           <div class="email-compose">
+                            <div class="d-n@md+ p-20"><a class="email-side-toggle c-grey-900 cH-blue-500 td-n" href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+                            <form class="email-compose-body">
+                               <div class="send-header">
+                                  <div class="form-group"><input type="text" class="form-control" id="ph-Number" ></div>
+                                  <div class="form-group"><input type="text" class="form-control" id="associatedWith" ></div>
+                                  <div class="form-group"><textarea name="compose" class="form-control" id="requestMessage" placeholder="Requests " rows="10"></textarea></div>
+                               </div>
+                               <div id="compose-area"></div>
+                               <div class="text-right mrg-top-30"><button ng-click="sendMessage()" class="btn btn-danger" data-dismiss="modal">Send</button></div>
+                              
+                            </form>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                  <div style="padding-left:70%"> <a href = "/ngo/dashboard"><< Back to dashboard</a></div>
+             </div>
         </main>
     </div>
    <script type="text/javascript" src="vendor.js"></script>

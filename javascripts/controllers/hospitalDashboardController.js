@@ -1,4 +1,4 @@
-angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$http', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', function ($scope, $http, $compile, DTOptionsBuilder, DTColumnBuilder) {
+angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$http', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder','$window', function ($scope, $http, $compile, DTOptionsBuilder, DTColumnBuilder,$window) {
 
     $scope.loaded = true;
 
@@ -49,11 +49,12 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
     };
 
     $scope.queryBlockchain = function () {
+        var token = $window.localStorage.getItem('token');
         $http({
             method: "GET",
             url: "http://10.53.18.86:4000/channels/mychannel/chaincodes/mycc?peer=peer0.org1.example.com&fcn=query&args=%5B%27%27%2C%27%27%5D",
             headers: {
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mzc1Njc2ODYsInVzZXJuYW1lIjoiSmltMSIsIm9yZ05hbWUiOiJPcmcxIiwiaWF0IjoxNTM3NTMxNjg2fQ.XrscjHVFpV-nZdCvLnP5YF0IRm3eXOtz31X_mtxqlvA',
+                'Authorization': 'Bearer '+token,
                 'content-type': 'application/json'
             }
         }).success(function (response) {
@@ -62,10 +63,78 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
             console.log(error);
         });
     };
+     
+    $scope.invokeBlockchain = function (data,callback) {
+        var token = $window.localStorage.getItem('token');
+        
+        $http({
+            method: "POST",
+            url: "http://10.53.18.86:4000/channels/mychannel/chaincodes/mycc",
+            headers: {
+                'Authorization': 'Bearer '+ token,
+                'content-type': 'application/json'
+            },
+            data:JSON.stringify(data)
+        }).success(function (response) {
+            callback(response,null);
+        }).error(function (error) {
+            callback(null,error);
+        });
+    };
+
+
 
     $scope.getpatientDetails();
     $scope.queryBlockchain();
 
+
+    $scope.showMessagePopup = function(number,ngo){
+        document.getElementById("ph-Number").value = number;
+        document.getElementById("associatedWith").value = ngo;
+
+    }
+    $scope.sendMessage = function(){
+        var isRequest = document.getElementById("requestSupply").checked;
+        var requestMessage = document.getElementById("requestMessage").value;
+        var ngoName =document.getElementById("associatedWith").value
+        var number = document.getElementById("ph-Number").value;
+        var requestId = "Req"+Date.now();
+        alert(isRequest);
+        if(isRequest){
+            var args = [requestId,"AIMS",requestMessage,number];
+            var peers =["peer0.org1.example.com"];
+            data={
+                "peers": peers,
+                "fcn":"hospitalInvoke",
+                "args":args
+            }
+            $scope.invokeBlockchain(data,function callback(data,error){
+                alert("Making 2nd req");
+                var args = [requestId,ngoName];
+                var peers =["peer0.org1.example.com"];
+                data={
+                    "peers": peers,
+                    "fcn":"ngoInvoke",
+                    "args":args
+                }
+                $scope.invokeBlockchain(data);
+            });
+        }
+	}
+
+    $scope.getVolunteerDetails = function () {
+
+        $http.get('/api/getVolunteers').success(function (data) {
+		    debugger;
+            $scope.volunteers = data.result;
+            console.log("Volunteer");
+            console.log(JSON.stringify(data));
+            $scope.loaded = false ; 
+        }).error(function (data) {            
+            console.log('Error: ' + data);
+        });
+    };
+	$scope.getVolunteerDetails();
 }]);
 
 
