@@ -4,28 +4,34 @@ var userController = require('../controllers/userController');
 // server side apis here
 
 
-  
 console.log('hit');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const btoa = require("btoa");
 const wml_credentials = new Map();
+
+
 exports.login = function(req, res) {
     
-    console.log('hi');
     var username = req.body.username ;
     var password = req.body.password ;
- 
-    if (username == '' || password == '') {
-        return res.send(401);
+  
+    if (username != 'Admin' || password !="Admin")
+    {
+    	 res.redirect('/login');
+        // res.send('login failed');    
     }
-    
-    if (username == 'Admin' && password== 'Admin'){
+    /** set username in session if authentication is successful **/
+    else  if (username == 'Admin' && password== 'Admin'){
+    	req.session.user = username ;
+    // res.send("login success!");
         return res.json({username:"Admin" , password: "Admin"});
     }
     else 
         return res.json({errMsg:"User doesn't exist. Please enter valid user"});
            
 };
+
+
 
 function apiGet(url, username, password, loadCallback, errorCallback){
         const oReq = new XMLHttpRequest();

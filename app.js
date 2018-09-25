@@ -3,6 +3,7 @@
  */
 
 var express = require('express'),
+    session = require('express-session'),
     routes = require('./routes'),
     user = require('./routes/user'),
 	login = require('./routes/login'),
@@ -51,6 +52,22 @@ app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.static(path.join(__dirname, 'javascripts')));
 app.use('/style', express.static(path.join(__dirname, '/views/style')));
 app.use('/user', user);
+
+/** set parameters for Session **/
+
+app.use(session({
+    secret: 'Test Service',
+    name: "test",
+    saveUninitialized: true,
+    resave:false,
+    cookie: {
+        //maxAge: 24 * 60 * 60 * 1000,
+        path: '/',
+        maxAge: 1 * 10 * 60 * 1000, 
+        overwrite: false    
+    }
+}));
+
 
 // development only
 if ('development' == app.get('env')) {
@@ -112,6 +129,8 @@ function initDBConnection() {
 
 initDBConnection();
 
+
+
 app.get('/', routes.index);
 /*app.all('*', function(req, res, next){
   console.log('(2) route middleware for all method and path pattern "*", executed first and can do stuff before going next');
@@ -120,6 +139,9 @@ app.get('/', routes.index);
 app.post('/login', userController.login);
 app.post('/getregion', userController.getregion);
 /*Added method to get Patient Details */
+
+
+/** Api to fetch patient details from db **/
 
 app.get('/api/getPatients', function (request, response) {
     console.log("Get method invoked.. ")
@@ -260,10 +282,7 @@ app.get('/api/getSymptoms', function (request, response) {
 	                return response.json({ result: data });
 	                console.log('ending response...');
 	                response.end();
-	            });
-	            
-	            
-	            
+	            });          
 	        }
 	    });
 	});
@@ -303,12 +322,84 @@ app.post('/api/addVolunteer', function (request, response) {
 	
 });
 
+
+/** Update query to set Mark as Cured/Mark as Detected status for case in db  **/
+
+
+app.put('/api/updateStatus', function (request, response) {
+
+          db = cloudant.use(dbCredentials.dbName);  
+
+            for (i=0;i < request.body.updatedData.length ; i++)
+            	{  
+
+            	 var id =request.body.updatedData[i]._id;
+           	  
+            	   dbUpdateQuery = {
+            			    '_id' :request.body.updatedData[i]._id,
+            			    '_rev' : request.body.updatedData[i]._rev,
+            	    		'document_type': 'symptoms',
+            	    		'hospital_name': request.body.updatedData[i].hospital_name,
+            	    		'location': request.body.updatedData[i].location,
+            	    		'patient_name': request.body.updatedData[i].patient_name,
+            	    		'patient_age': request.body.updatedData[i].patient_age,
+            	    		'patient_occ': request.body.updatedData[i].patient_occ,
+            	    		'City': request.body.updatedData[i].City,
+            	    		'Symptoms_reported':request.body.updatedData[i].Symptoms_reported,
+            	    	    'disease': request.body.updatedData[i].disease,
+            	    	    'prediction': request.body.updatedData[i].prediction,
+            	    	    'date_updated' : request.body.updatedData[i].date_updated,
+            	    		'status' :  request.body.updatedData[i].status
+            	    		
+            			}
+            	        //    console.log(dbUpdateQuery)
+            	  
+            	  
+            	  db.find({selector:{ "_id":id }}, function(err, result) {
+            		  if (err) return console.log(err.message);
+            		  console.log('Find completed: ' + JSON.stringify(result));
+            		  
+            		  db.insert(dbUpdateQuery , function(err, data) {
+            		    if (err) { return console.log(err.message);}
+            		    
+            		    console.log('Insert completed: ' + JSON.stringify(data));
+            		    return response.json({ result: data });
+    	                console.log('ending response...');
+    	                response.end();
+    	                
+            		  });
+            		
+            		});
+	
+            	}
+	
+});
+
+
+/** Logout API to destroy session **/
+
+app.get('/logout', function (req, res) {
+  req.session.destroy();
+  res.send("logout success!! Session Destroyed ");
+});
+
 app.use(express.static(__dirname));
 
-app.get('*', function(req, res) {
+/*app.get('*', function(req, res) {
 	res.sendfile('./views/index.html')
+}) */
+	
+/** check if Session is established and redirect accordingly  **/
+
+app.get('*', function(req, res) {
+    console.log("session object " + req.session.user);
+    if(req.session.user === undefined)
+    {     console.log("inside");
+          res.redirect('/');
+    }
+    res.sendfile('./views/index.html')
 }) 
-	 
+
 exports = module.exports = app;
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function () {
     console.log('Express server listening on port ' + app.get('port'));

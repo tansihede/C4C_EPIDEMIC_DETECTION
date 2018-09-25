@@ -1,8 +1,9 @@
 
-var myAppModule = angular.module('myApp', ['ngRoute','ngTagCloud','datatables']);
+var myAppModule = angular.module('myApp', ['ngRoute','ngTagCloud','datatables','datatables.select']);
 
-myAppModule.config(function($routeProvider,$locationProvider) {  
-    $routeProvider
+myAppModule.config(function($routeProvider,$locationProvider,$httpProvider) {  
+	$httpProvider.defaults.withCredentials = true;
+	$routeProvider
 
          .when('/:name/login', {
             templateUrl: 'views/login/signin.html',
@@ -24,7 +25,10 @@ myAppModule.config(function($routeProvider,$locationProvider) {
             controller: 'symptomController'                   
         }).when('/hospital/symptomAnalysis', {
             templateUrl: 'views/hospital/symptomAnalysis.html',
-            controller: 'symptomController'                   
+            controller: 'symptomController' 
+        }).when('/logout', {
+            templateUrl: 'views/landing.html',
+            controller: 'logoutController'            	
         }).otherwise({redirectTo:'/'})
 
     
