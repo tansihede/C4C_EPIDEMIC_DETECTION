@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Sign In</title>
+       <script src="scripts/jQuery-2.1.4.min.js"></script>
+       <script src="../public/scripts/bootstrap.js"></script>
+    <style>
+     
+        #loader {
+            transition: all .3s ease-in-out;
+            opacity: 1;
+            visibility: visible;
+            position: fixed;
+            height: 100vh;
+            width: 100%;
+            background: #fff;
+            z-index: 90000
+        }
+        
+        #loader.fadeOut {
+            opacity: 0;
+            visibility: hidden
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: calc(50% - 20px);
+            left: calc(50% - 20px);
+            background-color: #333;
+            border-radius: 100%;
+            -webkit-animation: sk-scaleout 1s infinite ease-in-out;
+            animation: sk-scaleout 1s infinite ease-in-out
+        }
+        
+        @-webkit-keyframes sk-scaleout {
+            0% {
+                -webkit-transform: scale(0)
+            }
+            100% {
+                -webkit-transform: scale(1);
+                opacity: 0
+            }
+        }
+        
+        @keyframes sk-scaleout {
+            0% {
+                -webkit-transform: scale(0);
+                transform: scale(0)
+            }
+            100% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                opacity: 0
+            }
+        }
+
+    </style>
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body class="app">
+    
+    <div id='loader' ng-show="loaded">
+      <div class="spinner"></div>
+    </div> 
+    
+    <div class="peers ai-s fxw-nw h-100vh">
+        <div class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv" style="background-image:url(images/bg_1.jpg)">
+            <!-- div class="pos-a centerXY">
+                <div class="bgc-white bdrs-50p pos-r" style="width:120px;height:120px"><img class="pos-a centerXY" src="images/logo.png" alt=""></div>
+            </div-->
+        </div>
+        <div class="col-12 col-md-4 peer pX-40 pY-80 h-100 bgc-white scrollable pos-r" style="min-width:320px">
+            <h4 class="fw-300 c-grey-900 mB-40">Login</h4>
+            <form name="loginForm" role="form" ng-submit="login('Org1')">
+                <div class="form-group">
+                    <label class="text-normal text-dark">Username</label>
+                    <input type="text" class="form-control" placeholder="User name" name="username" ng-model="username" required>
+                </div>
+                <div class="form-group">
+                    <label class="text-normal text-dark">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" name="password" ng-model="password" required>
+                </div>
+                <div class="form-group">
+                    <div class="peers ai-c jc-sb fxw-nw">
+                        <div class="peer">
+                            <div class="checkbox checkbox-circle checkbox-info peers ai-c">
+                                <input type="checkbox" id="inputCall1" name="inputCheckboxesCall" class="peer">
+                                <label for="inputCall1" class="peers peer-greed js-sb ai-c"><span class="peer peer-greed">Remember Me</span></label>
+                            </div>
+                        </div>
+                        <div class="peer">
+                         <button class="btn btn-primary" type="submit" ng-disabled="loginForm.$invalid" >Login</button>
+						 <a  ng-click="sendMessage('+91 7720238787')" class="btn btn-primary" data-toggle="modal" data-target="#registerModal" href="#">Register</a>
+																<span class="users-list-date">Today</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+	<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				 <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  
+						<div class="page-container" style="padding-left:0px;padding-top: 15px;">
+						
+						<main class="main-content bgc-grey-100" style="padding-top: 15px;">
+							<div id="mainContent" class="row">
+								<div class="masonry-item col-md-12">
+									<div class="bgc-white p-20 bd">
+										<h2 class="c-grey-900">Hospital Registration</h2>
+										<div class="mT-30">
+											<form id="form" ng-submit="getSymptoms()">
+												<div class="form-row">
+													<div class="form-group col-md-12">
+														<label for="inputEmail4">Name</label>
+														<input type="text" class="form-control" id="inputName" placeholder="patient Name" ng-model="inputName" name="inputName">
+													</div>
+												</div>
+												<div class="form-row">
+													<div class="form-group col-md-12">
+														<label for="inputPassword4">Contact No</label>
+														<input type="text" class="form-control" id="inputPhno" placeholder="Ph-number" ng-model="inputAge" name="inputAge"  >
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label for="inputAddress2">Description</label>
+													<input type="text" class="form-control" id="inputSpecilization" placeholder="Specailization in?" ng-model="inputSymptoms"  name="inputSymptoms">
+												</div>
+												<div class="form-row">
+													<div class="form-group col-md-6">
+														<label for="inputCity">Country</label>
+														<input type="text" class="form-control" id="inputCountry" ng-model="inputCountry" name="inputCountry">
+													</div>
+													<div class="form-group col-md-4">
+														<label for="inputState">State</label>
+														<input type="text" class="form-control" id="inputState" ng-model="inputState"  name="inputState">
+													</div>
+													<div class="form-group col-md-2">
+														<label for="inputZip">Zip</label>
+														<input type="text" class="form-control" id="inputZip" ng-model="inputZip" name="inputZip">
+													</div>
+												</div>
+												<div class="form-row">
+													<div class="form-group col-md-12">
+														<label for="inputUserName">User Name</label>
+														<input type="text" class="form-control" id="inputUserName" placeholder="User name" ng-model="inputName" name="inputName">
+													</div>
+												</div>
+												<div class="form-row">
+													<div class="form-group col-md-6">
+														<label for="inputPassword4">Password</label>
+														<input type="password" class="form-control" id="inputPassword"  ng-model="inputAge" name="inputAge"  >
+													</div>
+												
+												
+													<div class="form-group col-md-6">
+														<label for="inputCofirmPassword4">Confirm Passsword</label>
+														<input type="password" class="form-control" id="inputCofirmPassword4"  ng-model="inputAge" name="inputAge"  >
+													</div>
+												</div>
+												<div class="text-right mrg-top-30"><button ng-click="registerHospital()" class="btn btn-danger"  data-dismiss="modal" >Register</button></div>
+                                                
+                                                <!--    <a id='goToLink'></a -->
+											</form>
+										</div>
+									</div>
+								</div>    
+								
+										
+						   
+							   <!-- <div style="padding-left:35%"> <a href = "/hospital/dashboard"><< Back to dashboard</a></div> -->
+							</div> 
+						
+						</main>		 
+					</div>
+				 </div>
+			  </div>
+		 </div>  
+  <script type="text/javascript" src="vendor.js"></script>
+    <script type="text/javascript" src="bundle.js"></script>
+</body>
+
+
+</html>

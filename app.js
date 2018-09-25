@@ -288,6 +288,44 @@ app.get('/api/getSymptoms', function (request, response) {
 	});
 
 
+app.get('/api/getVolunteers', function (request, response) {
+    console.log("Get method invoked.. ")
+
+    db = cloudant.use(dbCredentials.dbName);
+
+    db.list(function (err, body) {
+        if (!err) {
+            var len = body.rows.length;
+            console.log('total # of docs -> ' + len);
+            if (len == 0) {
+
+            } else {
+                var query = {
+                    "selector": {
+                        "document_type": "volunteer"
+                    }
+                };
+
+                db.find(query, function (err, doc) {
+                    if (!err) {
+                        console.log(doc.docs);
+                        return response.json({ result: doc.docs });
+                        //   response.write(JSON.stringify(doc.docs));
+                        console.log('ending response...');
+                        response.end();
+                    }
+                    else {
+                        console.log(err);
+                    }
+                });
+            }
+
+        } else {
+            console.log(err);
+        }
+    });
+});	
+	
 app.post('/api/addVolunteer', function (request, response) {
     console.log("Post method invoked.. ")
     console.log(request.body);
@@ -321,7 +359,37 @@ app.post('/api/addVolunteer', function (request, response) {
 	// response.send('POST request to the homepage')
 	
 });
+app.post('/api/addHospital', function (request, response) {
+    console.log("Post method invoked.. ")
+    console.log(request.body);
+    var newHospital=request.body;
+		
+    dbInsertQuery = { 
+					  "document_type": "hospital", 
+					  "name": newHospital.name, 
+					  "contact":newHospital.phno, 
+					  "specialization": newHospital.specialization, 
+					  "country": newHospital.country, 
+					  "state": newHospital.state,
+					  "zip":newHospital.zip,
+					  "userName":newHospital.userName,
+					  "password":newHospital.password 	
+					}
+            console.log(dbInsertQuery)
 
+            db = cloudant.use(dbCredentials.dbName);
+            db.insert(dbInsertQuery, function (er, result) {
+                if (er) {
+                    throw er;
+                }
+
+                //return response.json({ result: data });
+                console.log('ending response...');
+                response.end();
+     });
+	// response.send('POST request to the homepage')
+	
+});
 
 /** Update query to set Mark as Cured/Mark as Detected status for case in db  **/
 
