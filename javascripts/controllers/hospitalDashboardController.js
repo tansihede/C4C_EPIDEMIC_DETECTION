@@ -52,6 +52,7 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
     
  	$scope.markAsCured = function(data) {
  		//alert(data);
+ 		
  		 var count = $scope.dtInstance.DataTable.rows( { selected: true } ).count();
     	 var selectedData = $scope.dtInstance.DataTable.rows( { selected: true } ).data();
 
@@ -68,7 +69,8 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
     	 
     	 
     	 $http.put('/api/updateStatus',params).success(function(data) {   		   
-     		 console.log('Update Success' + data);
+     		 alert("Case has been Updated Successfully ! ");
+    		 console.log('Update Success' + data);
   		}).error(function(data) {
   		     //alert('Invalid Username or Password')
   		      console.log('Error: ' + data);

@@ -31,6 +31,7 @@ angular.module('myApp').controller('userController', ['$scope', '$http', '$windo
         $http({
           method: "POST",
           url: "http://10.53.18.86:4000/loginUsers",
+          withCredentials : false , 
           headers: {
             'content-type': 'application/json'
           },
@@ -54,6 +55,7 @@ angular.module('myApp').controller('userController', ['$scope', '$http', '$windo
       if (type== "Org2") {
         $http({
           method: "POST",
+          withCredentials : false , 
           url: "http://10.53.18.86:4000/loginUsers",
           headers: {
             'content-type': 'application/json'
@@ -83,6 +85,7 @@ angular.module('myApp').controller('userController', ['$scope', '$http', '$windo
     $http({
       method: "POST",
       url: "http://10.53.18.86:4000/loginUsers",
+      withCredentials : false , 
       headers: {
         'content-type': 'application/json'
       },
@@ -105,6 +108,7 @@ angular.module('myApp').controller('userController', ['$scope', '$http', '$windo
     $http({
       method: "POST",
       url: "http://10.53.18.86:4000/users",
+      withCredentials : false , 
       headers: {
         'content-type': 'application/json'
       },
