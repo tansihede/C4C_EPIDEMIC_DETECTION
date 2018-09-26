@@ -30,7 +30,7 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
             $scope.dtOptions = DTOptionsBuilder.newOptions()
                 .withOption('data', $scope.result)
                 .withPaginationType('full_numbers')
-                .withDisplayLength('5')
+                .withDisplayLength(5)
                 .withOption('createdRow', createdRow)
                 .withOption('lengthMenu',[5,10,15]) 
                 .withOption('select',{style:'multi',selector: 'td:first-child'})
