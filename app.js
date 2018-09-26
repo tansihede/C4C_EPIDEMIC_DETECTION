@@ -211,13 +211,33 @@ app.get('/api/getSymptoms', function (request, response) {
 	    var data = [{
 	        'diseaseName': 'Cholera',
 	        'detectedSymptoms': [],
-	        'symptoms': ['diarrhoea', 'nausea', 'Vomiting', 'Dehydration','muscle pain','dizziness','loose motions'],
+	        'symptoms': ['diarrhoea', 'nausea', 'Vomiting', 'Dehydration','Muscle pain','dizziness','loose motions'],
 	        'ageRange': "30-40"
 	    }, {
 	        'diseaseName': 'Influenza',
 	        'detectedSymptoms': [],
 	        'symptoms': ['Fever', 'Runny Nose', 'soar throat', 'Muscle Pain', 'headache', 'Cough', 'Tired', 'Body Pain'],
 	        'ageRange': "40-50"
+	    }, {
+	        'diseaseName': 'Malaria',
+	        'detectedSymptoms': [],
+	        'symptoms': ['Fever', 'Vomiting', 'nausea', 'Muscle Pain', 'headache', 'diarrhea', 'chills', 'sweat'],
+	        'ageRange': "20-30"
+	    }, {
+	        'diseaseName': 'Yellow Fever',
+	        'detectedSymptoms': [],
+	        'symptoms': ['Fever', 'Loss of appetite', 'nausea', 'Muscle Pain', 'headache', 'Dizziness', 'Red eyes'],
+	        'ageRange': "30-40"
+	    }, {
+	        'diseaseName': 'Dengue',
+	        'detectedSymptoms': [],
+	        'symptoms': ['Fever', 'Fatigue', 'nausea', 'Muscle Pain', 'headache', 'Vomiting', 'Skin rash'],
+	        'ageRange': "40-50"
+	    }, {
+	        'diseaseName': 'Nipah Virus',
+	        'detectedSymptoms': [],
+	        'symptoms': ['Fever', 'soar throat', 'vomiting', 'Muscle Pain', 'headache', 'dizziness '],
+	        'ageRange': "20-30"
 	    }];
 
 	    var parameters = {
@@ -268,21 +288,56 @@ app.get('/api/getSymptoms', function (request, response) {
 	                if (percent > MaxPercent){
 	                    predictedDisease = data[i]['diseaseName']
 	                }
-	            }
+                }
+                
 
-	            dbInsertQuery = { "document_type": "symptoms", "hospital_name": "All India Institute of Medical Sciences", "location": patientCountry, "patient_name": patientName, "patient_age": patientAge, "patient_occ": patientOccupation, "City": patientState, "Symptoms_reported": patientSymptoms, "disease": predictedDisease, "prediction": prediction, "date_updated": todayDate }
-	            console.log(dbInsertQuery)
+                var NaturalLanguageClassifierV1 = require('watson-developer-cloud/natural-language-classifier/v1');
+                var naturalLanguageClassifier = new NaturalLanguageClassifierV1({
+                    username: 'b3f234a1-7d04-4610-a839-527472cdf117',
+                    password: 'rWBh8mE7RfNG'
+                });
 
-	            db = cloudant.use(dbCredentials.dbName);
-	            db.insert(dbInsertQuery, function (er, result) {
-	                if (er) {
-	                    throw er;
-	                }
+                naturalLanguageClassifier.classify({
+                    text: patientSymptoms,
+                    classifier_id: 'b8f3cex446-nlc-1133' },
+                    function(err, res) {
+                    if (err)
+                        console.log('error:', err);
+                    else{
+                        console.log(JSON.stringify(res, null, 2));
 
-	                return response.json({ result: data });
-	                console.log('ending response...');
-	                response.end();
-	            });          
+                        disease1 = res.classes[0].class_name;
+                        disease2 = res.classes[1].class_name;
+
+                        console.log(disease1 , disease2);
+
+                        data2 = []
+                        for (i = 0; i < data.length; i++) {
+                            if (data[i]['diseaseName'] == disease1 || data[i]['diseaseName'] == disease2){
+                                data2.push(data[i])
+                            }
+                        }
+        
+                        dbInsertQuery = { "document_type": "symptoms", "hospital_name": "All India Institute of Medical Sciences", "location": patientCountry, "patient_name": patientName, "patient_age": patientAge, "patient_occ": patientOccupation, "City": patientState, "Symptoms_reported": patientSymptoms, "disease": predictedDisease, "prediction": prediction, "date_updated": todayDate }
+                        console.log(dbInsertQuery)
+        
+                        db = cloudant.use(dbCredentials.dbName);
+                        db.insert(dbInsertQuery, function (er, result) {
+                            if (er) {
+                                throw er;
+                            }
+        
+                            return response.json({ result: data2 });
+                            console.log('ending response...');
+                            response.end();
+                        }); 
+
+
+                    }
+                        
+                });
+
+         
 	        }
 	    });
 	});
