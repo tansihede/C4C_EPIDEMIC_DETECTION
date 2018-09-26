@@ -88,11 +88,13 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
         $http({
             method: "GET",
             url: "http://10.53.18.86:4000/channels/mychannel/chaincodes/mycc?peer=peer0.org1.example.com&fcn=query&args=%5B%27%27%2C%27%27%5D",
+            withCredentials : false , 
             headers: {
                 'Authorization': 'Bearer '+token,
                 'content-type': 'application/json'
             }
         }).success(function (response) {
+            $scope.requests = response.responce;
             console.log(response);
         }).error(function (error) {
             console.log(error);
@@ -104,6 +106,7 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
         
         $http({
             method: "POST",
+            withCredentials : false , 
             url: "http://10.53.18.86:4000/channels/mychannel/chaincodes/mycc",
             headers: {
                 'Authorization': 'Bearer '+ token,
