@@ -57,7 +57,7 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
     	 var selectedData = $scope.dtInstance.DataTable.rows( { selected: true } ).data();
 
     	 if( selectedData.length <= 0)
-    	 { alert("Please Select atleast one record ");
+    	 { //alert("Please Select atleast one record ");
     	   return ;
     	 }
     	 else {
@@ -139,7 +139,7 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
         var ngoName =document.getElementById("associatedWith").value
         var name =  document.getElementById("hiddenVolunteerName").value;
         var requestId = "Req"+Date.now();
-        alert(isRequest);
+        //alert(isRequest);
         if(isRequest){
             var args = [requestId,"AIMS",requestMessage,name];
             var peers =["peer0.org1.example.com"];
@@ -149,7 +149,7 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
                 "args":args
             }
             $scope.invokeBlockchain(data,function callback(data,error){
-                alert("Making 2nd req");
+                //alert("Making 2nd req");
                 var args = [requestId,ngoName];
                 var peers =["peer0.org1.example.com"];
                 data={
@@ -225,11 +225,6 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
         if(assetRequested){
             document.getElementById("assetRequested").setAttribute("class", "li complete");
         }
-        
-       
-       
-       
-        
     }
 
 
