@@ -103,7 +103,7 @@ webpackJsonp([0], {
                             label: "Yellow Fever", backgroundColor: "rgba(232, 245, 233, 0.5)", borderColor: p.a["blue-500"], pointBackgroundColor: p.a["blue-700"], borderWidth: 2, data: [23, 45, 30, 40, 75, 85, 60]
                         }
                         , {
-                            label: "Malaria", backgroundColor: "rgba(212, 245, 133, 0.5)", borderColor: p.a["orange-500"], pointBackgroundColor: p.a["blue-700"], borderWidth: 2, data: [10, 15, 85, 20, 75, 85, 30]
+                            label: "Malaria", backgroundColor: "rgba(110, 245, 133, 0.5)", borderColor: p.a["orange-500"], pointBackgroundColor: p.a["blue-700"], borderWidth: 2, data: [10, 15, 85, 20, 75, 85, 30]
                         }
                         ]
                     }
