@@ -1,7 +1,8 @@
 angular.module('myApp').controller('diseasesController', ['$scope', '$window','$http','$compile','DTOptionsBuilder', 'DTColumnBuilder', function ($scope,$window, $http,$compile, DTOptionsBuilder, DTColumnBuilder) { 
-	
+    
     $scope.loaded = true ; 
     $scope.dtInstance = {};
+    $scope.approveFlag = true;
 
 	$scope.getpatientDetails = function () {
 

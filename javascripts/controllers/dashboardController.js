@@ -5,6 +5,8 @@ angular.module('myApp').controller('dashboardController', ['$scope','$window','$
   /*  alert("fine");*/
     $scope.userlabel = "John";
     $scope.requests=[];
+    $scope.approveFlag = true;
+
     $scope.queryBlockchain = function () {
       var token = $window.localStorage.getItem('token');
       $http({

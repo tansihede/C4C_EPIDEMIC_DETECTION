@@ -1,7 +1,8 @@
 angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$http','$compile', 'DTOptionsBuilder', 'DTColumnBuilder','$window', function ($scope, $http, $compile, DTOptionsBuilder, DTColumnBuilder,$window) {
 
 	$scope.loaded = true; 
-	$scope.statuses = [{"id":6,"name":"Mark As Cured"},{"id":7,"name":"Mark as Detected"}]; 
+    $scope.statuses = [{"id":6,"name":"Mark As Cured"},{"id":7,"name":"Mark as Detected"}]; 
+    $scope.approveFlag = false;
 		 
    /** Function to get patient details **/
 
