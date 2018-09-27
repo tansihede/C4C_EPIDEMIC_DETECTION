@@ -72,7 +72,7 @@ wml_credentials.set("username", "e25714de-183a-437d-8f5f-16da3326526d");
 wml_credentials.set("password", "a3024104-a561-42ab-a7ba-be9b362ca89d");
 
 
-
+var country = req.body.data.toLowerCase();
 apiGet(wml_credentials.get("url"),
         wml_credentials.get("username"),
         wml_credentials.get("password"),
@@ -86,10 +86,29 @@ apiGet(wml_credentials.get("url"),
         if (parsedGetResponse && parsedGetResponse.token) {
             const token = parsedGetResponse.token
             const wmlToken = "Bearer " + token;
-
+			var payload ='';
+			
+			console.log(req.body.data.toLowerCase());
+			if(country=="china"){
+				console.log("here in china");
+				payload = '{"fields": ["Year", "Month", "Season", "Temperature", "Rainfall", "Country", "Occupation"], "values": [[2018,"September","Summer","High","High","China","Agriculture"]]}';
+			}else if(country=="india"){
+				payload = '{"fields": ["Year", "Month", "Season", "Temperature", "Rainfall", "Country", "Occupation"], "values": [[2018,"September","Summer","High","High","India","Agriculture"]]}';
+			}else if(country=="liberia"){
+				payload = '{"fields": ["Year", "Month", "Season", "Temperature", "Rainfall", "Country", "Occupation"], "values": [[2018,"September","Summer","High","Medium","Liberia","Agriculture"]]}';
+				
+			}else if(country=="chad"){
+				payload = '{"fields":["Year","Month","Season","Temperature","Rainfall","Country","Occupation"],"values":[[2018,"September","Winter","Low","Low","Chad","Textile"]]}';
+			}else if(country=="nigeria"){
+				payload = '{"fields":["Year","Month","Season","Temperature","Rainfall","Country","Occupation"],"values":[[2018,"September","Summer","High","High","Nigeria","Agriculture"]]}';
+			}else if(country=="egypt"){
+				payload='{"fields":["Year","Month","Season","Temperature","Rainfall","Country","Occupation"],"values":[[2018,"September","Summer","High","Low","Egypt","Services"]]}';
+			}else if(country=="madagascar"){
+				payload='{"fields":["Year","Month","Season","Temperature","Rainfall","Country","Occupation"],"values":[[2018,"September","Winter","Low","Low","Madagascar","Agriculture"]]}';
+			}
             // NOTE: manually define and pass the array(s) of values to be scored in the next line
-                       const payload = '{"fields": ["Year", "Month", "Season", "Temperature", "Rainfall", "Country", "Occupation"], "values": [[2018,"August","Summer","High","High","India","Agriculture"]]}';
-                       const scoring_url = "https://eu-gb.ml.cloud.ibm.com/v3/wml_instances/e2e1cb8a-7fba-4ca2-a61b-e403a4344bbd/deployments/93c9da11-8144-4a21-8dc4-d2df0965e2da/online";
+            //const payload = '{"fields": ["Year", "Month", "Season", "Temperature", "Rainfall", "Country", "Occupation"], "values": [[2018,"September","Summer","High","High","China","Agriculture"]]}';           
+            const scoring_url = "https://eu-gb.ml.cloud.ibm.com/v3/wml_instances/e2e1cb8a-7fba-4ca2-a61b-e403a4344bbd/deployments/93c9da11-8144-4a21-8dc4-d2df0965e2da/online";
 
             apiPost(scoring_url, wmlToken, payload, function (resp) {
                 let parsedPostResponse;
@@ -106,15 +125,17 @@ apiGet(wml_credentials.get("url"),
 					return a - b;
 				}
 				var percentage = parsedPostResponse.values[0][9];
-				percentage.sort(sortNumber);
+				//percentage.sort(sortNumber);
 				var diseases = parsedPostResponse.values[0][12];
 				var html = '';
 				//<div class="layer w-100"><h5 class="mB-5">Malaria</h5><small class="fw-600 c-grey-700">Visitors From USA</small> <span class="pull-right c-grey-600 fsz-sm">50%</span><div class="progress mT-10"><div class="progress-bar bgc-deep-purple-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%"><span class="sr-only">50% Complete</span></div></div></div>
 				for(var i=0; i<percentage.length; i++){
 					var actval = percentage[i]*100;
 					actval = actval.toFixed(2);
+					if (actval < 10)
+						continue;
 					
-					html+='<div class="layer w-100"><h5 class="mB-5"><a href="/outbreak">'+diseases[i]+'</a></h5><small class="fw-600 c-grey-700"></small>';
+					html+='<div class="layer w-100"><h5 class="mB-5"><a href="/ngo/outbreak">'+diseases[i]+'</a></h5><small class="fw-600 c-grey-700"></small>';
 					html+='<span class="pull-right c-grey-600 fsz-sm">'+actval+'%</span><div class="progress mT-10"><div class="progress-bar bgc-deep-purple-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:'+actval+'%"><span class="sr-only">'+actval+'% Complete</span></div></div></div>';
 				}
 				resdata.writeHeader(200, {"Content-Type": "text/html"});  

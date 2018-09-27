@@ -384,46 +384,48 @@ webpackJsonp([0], {
                             r: 7, fill: "#fff", "fill-opacity": 1, stroke: "#000", "stroke-width": 2, "stroke-opacity": .4
                         }
                     }
-                    , markers:[ {
-                        latLng: [20.5937, 78.9629], name: "INDIA"
-                    }
-                    , {
-                        latLng: [.7893, 113.9213], name: "Indonesia"
-                    }
-                    , {
-                        latLng: [5.012319, -9.041973], name: "Liberia"
-                    }
-                    , {
-                        latLng: [12.5657, 104.991], name: "Cambodia"
-                    }
-                    , {
-                        latLng: [-19.002846, 46.8691], name: "Madagascar"
-                    }
-                    , {
-                        latLng: [39.91, 116.36], name: "China"
-                    }
-                    ], series: {
-                        regions:[ {
-                            values: {
-                                IN: 20, ID: 10, LR: 20, KH: 10, MG: 10, CN: 10
-                            }
-                            , scale:["#03a9f3", "#02a7f1"], normalizeFunction:"polynomial"
-                        }
-                        ]
-                    }
-                    , hoverOpacity:null, normalizeFunction:"linear", zoomOnScroll:!1, scaleColors:["#b6d6ff", "#005ace"], selectedColor:"#c9dfaf", selectedRegions:[], enableZoom:!1, hoverColor:"#fff", onRegionClick:function(t, i, a) {
-                        r("#vmap").vectorMap("get", "mapObject"), i.toUpperCase();
-                        r.ajax( {
-                            type:"POST", url:"http://localhost:5000/getregion", cache:!1, async:!1, success:function(t) {
-                                r(".diseasedata").html(t)
-                            }
-                        }
-                        )
-                    }
+                    , markers : [{
+                        latLng : [20.5937, 78.9629],
+                        name : 'INDIA',
+                      }, {
+                        latLng : [5.012319, -9.041973],
+                        name : 'Liberia',
+                      }, {
+                        latLng : [12.5657, 104.9910],
+                        name : 'Cambodia',
+                      }, {
+                        latLng : [-19.002846, 46.8691],
+                        name : 'Madagascar',
+                      },{
+                        latLng : [39.91, 116.36],
+                        name : 'China',
+                      },{
+                        latLng : [26.8206, 30.8025],
+                        name : 'Egypt'
+                      },{
+                        latLng : [9.0820, 8.6753],
+                        name : 'Nigeria'
+                      },{
+                        latLng : [15.4542, 18.7322],
+                        name : 'Chad'
+                      }                              
+                       ], series: {
+                        regions: [{
+                          values: {
+                            'IN': 10,'LR': 20,'KH': 10, 'MG': 8.33,'CN': 10,'EG': 10, 'NG': 10,'TD': 50                                                 
+                          },
+                          scale: ['#03a9f3', '#02a7f1'],
+                          normalizeFunction: 'polynomial',
+                        }],
+                      },
+                     hoverOpacity:null,normalizeFunction:"linear",zoomOnScroll:!1,scaleColors:["#b6d6ff", "#005ace"],selectedColor:"#c9dfaf", selectedRegions:[], enableZoom:!1, hoverColor:"#fff",onRegionClick:function(t,i,a){
+						var n=r("#vmap").vectorMap("get","mapObject");i.toUpperCase();
+                        r.ajax({
+							type:"POST",data:{"data":n.getRegionName(i)},url:"http://localhost:5000/getregion",cache:!1,async:!1,success:function(t){r(".diseasedata").html(t)}})
+                     }
                 }
                 ))
-            }
-            ;
+            };
             t(), r(window).resize(Object(o.debounce)(t, 150))
         }
         ()
