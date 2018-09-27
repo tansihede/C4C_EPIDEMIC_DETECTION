@@ -94,7 +94,8 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
                 'content-type': 'application/json'
             }
         }).success(function (response) {
-            $scope.requests = response.responce;
+            $scope.requests = response.responce.reverse();
+
             console.log(response);
         }).error(function (error) {
             console.log(error);
@@ -126,20 +127,21 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
     $scope.queryBlockchain();
 
 
-    $scope.showMessagePopup = function(number,ngo){
+    $scope.showMessagePopup = function(number,ngo,name){
         document.getElementById("ph-Number").value = number;
         document.getElementById("associatedWith").value = ngo;
+        document.getElementById("hiddenVolunteerName").value = name;
 
     }
     $scope.sendMessage = function(){
         var isRequest = document.getElementById("requestSupply").checked;
         var requestMessage = document.getElementById("requestMessage").value;
         var ngoName =document.getElementById("associatedWith").value
-        var number = document.getElementById("ph-Number").value;
+        var name =  document.getElementById("hiddenVolunteerName").value;
         var requestId = "Req"+Date.now();
         alert(isRequest);
         if(isRequest){
-            var args = [requestId,"AIMS",requestMessage,number];
+            var args = [requestId,"AIMS",requestMessage,name];
             var peers =["peer0.org1.example.com"];
             data={
                 "peers": peers,
@@ -155,7 +157,9 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
                     "fcn":"ngoInvoke",
                     "args":args
                 }
-                $scope.invokeBlockchain(data);
+                $scope.invokeBlockchain(data, function callback(data,error){
+                    $scope.queryBlockchain();
+                });
             });
         }
 	}
@@ -174,6 +178,9 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
     };
     $scope.getVolunteerDetails();
     
+
+
+    // Copy these in NGO DASHBOARD (Once header is fixed)
 
     /** Function to Approve supply chain **/
  	$scope.approveRequest = function(requestId) {
@@ -196,14 +203,34 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
             },
             data:JSON.stringify(data)
         }).success(function (response) {
-            callback(response,null);
+           $scope.queryBlockchain();
+            console.log("Approved")
         }).error(function (error) {
-            callback(null,error);
+             console.log("Approve Failed")
         });
 	 
  	}  // Approve supply chain
 
-
+    $scope.supplyChainPopup = function(hospitalSuccess, ngoSuccess, volunteerSuccess, assetRequested){
+        
+        if(hospitalSuccess){
+             document.getElementById("hospitalSuccess").setAttribute("class", "li complete");
+        }
+        if(ngoSuccess){
+            document.getElementById("ngoSuccess").setAttribute("class", "li complete");
+        }
+        if(volunteerSuccess){
+             document.getElementById("volunteerSuccess").setAttribute("class", "li complete");
+        }
+        if(assetRequested){
+            document.getElementById("assetRequested").setAttribute("class", "li complete");
+        }
+        
+       
+       
+       
+        
+    }
 
 
 }]);

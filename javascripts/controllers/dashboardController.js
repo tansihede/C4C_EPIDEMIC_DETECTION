@@ -16,7 +16,7 @@ angular.module('myApp').controller('dashboardController', ['$scope','$window','$
               'content-type': 'application/json'
           }
       }).success(function (response) {
-         $scope.requests =response.responce;
+         $scope.requests =response.responce.reverse();
          console.log(response);
       }).error(function (error) {
           console.log(error);
