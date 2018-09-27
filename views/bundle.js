@@ -96,11 +96,14 @@ webpackJsonp([0], {
                 var i=t.getContext("2d");
                 t.height=80, new n.a(i, {
                     type:"line", data: {
-                        labels:["January", "February", "March", "April", "May", "June", "July"], datasets:[ {
-                            label: "Series A", backgroundColor: "rgba(237, 231, 246, 0.5)", borderColor: p.a["deep-purple-500"], pointBackgroundColor: p.a["deep-purple-700"], borderWidth: 2, data: [60, 50, 70, 60, 50, 70, 60]
+                        labels:["October", "November", "December", "January", "February", "March", "April"], datasets:[ {
+                            label: "Influenza", backgroundColor: "rgba(237, 231, 246, 0.5)", borderColor: p.a["deep-purple-500"], pointBackgroundColor: p.a["deep-purple-700"], borderWidth: 2, data: [60, 50, 70, 60, 50, 70, 60]
                         }
                         , {
-                            label: "Series B", backgroundColor: "rgba(232, 245, 233, 0.5)", borderColor: p.a["blue-500"], pointBackgroundColor: p.a["blue-700"], borderWidth: 2, data: [70, 75, 85, 70, 75, 85, 70]
+                            label: "Yellow Fever", backgroundColor: "rgba(232, 245, 233, 0.5)", borderColor: p.a["blue-500"], pointBackgroundColor: p.a["blue-700"], borderWidth: 2, data: [23, 45, 30, 40, 75, 85, 60]
+                        }
+                        , {
+                            label: "Malaria", backgroundColor: "rgba(212, 245, 133, 0.5)", borderColor: p.a["orange-500"], pointBackgroundColor: p.a["blue-700"], borderWidth: 2, data: [10, 15, 85, 20, 75, 85, 30]
                         }
                         ]
                     }
