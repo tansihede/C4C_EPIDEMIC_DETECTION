@@ -18,7 +18,7 @@
                                                 
                                             <a href="" class="peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100">
                                                 <div class="peer mR-15"><img class="w-3r bdrs-50p" src="/public/images/ngo.png" alt=""></div>
-                                                <div class="peer peer-greed"><span><span class="fw-500" ng-click="supplyChainPopup(request.Record.hospitalSuccess, request.Record.ngoSuccess, request.Record.volunteerSuccess, request.Record.assetRequested)" data-toggle="modal" data-target="#supplyChainModel">{{request.Record.volunteerName}}</span> <span class="c-grey-600">Requested for {{request.Record.assetRequested}}<span class="text-dark">video</span></span>
+                                                <div class="peer peer-greed"><span><span class="fw-500" ng-click="supplyChainPopup(request.Record.hospitalSuccess, request.Record.ngoSuccess, request.Record.volunteerSuccess, request.Record.assetRequested)" data-toggle="modal" data-target="#supplyChainModel">{{request.Record.volunteerName}}</span> <span class="c-grey-600">Requested for <span class="text-dark">{{request.Record.assetRequested}}</span></span>
                                                     </span>
                                                     <div ng-if="request.Record.ngoSuccess == false">
                                                         <p class="m-0"><small class="fsz-xs"><button ng-click="approveRequest(request.Key)" class="approveRequest">Approve</button></small></p>
