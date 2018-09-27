@@ -3,7 +3,8 @@ angular.module('myApp').controller('symptomController', ['$scope', '$http', '$ro
 	
 //	$scope.loaded = true;
 	$scope.success_true = false;
-    $scope.result = {};
+	$scope.result = {};
+	$scope.approveFlag = false;
     
 	$scope.getSymptoms = function () {
 
