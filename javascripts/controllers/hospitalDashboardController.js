@@ -172,7 +172,39 @@ angular.module('myApp').controller('hospitalDashboardController', ['$scope', '$h
             console.log('Error: ' + data);
         });
     };
-	$scope.getVolunteerDetails();
+    $scope.getVolunteerDetails();
+    
+
+    /** Function to Approve supply chain **/
+ 	$scope.approveRequest = function(requestId) {
+        var token = $window.localStorage.getItem('token');
+        var args = [requestId];
+        var peers =["peer0.org1.example.com"];
+        var data={
+            "peers": peers,
+            "fcn":"volunteerInvoke",
+            "args":args
+        }
+
+        $http({
+            method: "POST",
+            withCredentials : false , 
+            url: "http://10.53.18.86:4000/channels/mychannel/chaincodes/mycc",
+            headers: {
+                'Authorization': 'Bearer '+ token,
+                'content-type': 'application/json'
+            },
+            data:JSON.stringify(data)
+        }).success(function (response) {
+            callback(response,null);
+        }).error(function (error) {
+            callback(null,error);
+        });
+	 
+ 	}  // Approve supply chain
+
+
+
 
 }]);
 

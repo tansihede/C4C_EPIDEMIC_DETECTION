@@ -21,7 +21,7 @@
                                                 <div class="peer peer-greed"><span><span class="fw-500">{{request.Record.volunteerName}}</span> <span class="c-grey-600">Requested for {{request.Record.assetRequested}}<span class="text-dark">video</span></span>
                                                     </span>
                                                     <div ng-if="request.Record.ngoSuccess == false">
-                                                        <p class="m-0"><small class="fsz-xs"><button class="approveRequest">Approve</button></small></p>
+                                                        <p class="m-0"><small class="fsz-xs"><button ng-click="approveRequest(request.Key)" class="approveRequest">Approve</button></small></p>
                                                     </div>
                                                     <div ng-if="request.Record.ngoSuccess == true">
                                                             <p class="m-0"><small class="fsz-xs">Approved!</small></p>
